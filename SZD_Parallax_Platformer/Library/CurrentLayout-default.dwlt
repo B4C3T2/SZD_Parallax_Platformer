@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 39
+  controlID: 17
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 40
+  controlID: 50
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 41
+  controlID: 51
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -314,22 +314,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: D:\SZD_Parallax_Platformer\SZD_Parallax_Platformer
+  m_LastProjectPath: D:\Egyetem\Szakdolgozat\SZD_Parallax_Platformer\SZD_Parallax_Platformer
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a0590000
-    m_LastClickedID: 22944
-    m_ExpandedIDs: 00000000a059000000ca9a3b
+    m_SelectedIDs: b0590000
+    m_LastClickedID: 22960
+    m_ExpandedIDs: 00000000a459000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -357,7 +357,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a0590000
+    m_ExpandedIDs: 00000000a4590000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -479,8 +479,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
+      m_SelectedIDs: 42fbffff
+      m_LastClickedID: -1214
       m_ExpandedIDs: 42fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -541,9 +541,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 781.1708, y: 228.3772, z: -137.52051}
+    m_Target: {x: 549.9759, y: 216.55827, z: -306.53906}
     speed: 2
-    m_Value: {x: 781.1708, y: 228.3772, z: -137.52051}
+    m_Value: {x: 549.9759, y: 216.55827, z: -306.53906}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -594,9 +594,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 346.21213
+    m_Target: 245.72032
     speed: 2
-    m_Value: 346.21213
+    m_Value: 245.72032
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -732,6 +732,6 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 633
-    width: 1465
+    width: 1366
     height: 366
   m_ViewDataDictionary: {fileID: 0}
