@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Animator animator;
+
     public float movementSpeed;
     public Rigidbody2D rb;
 
@@ -15,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+
         mx = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && IsGrouned())
