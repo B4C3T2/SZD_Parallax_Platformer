@@ -23,12 +23,14 @@ public class PlayerOneMovement : MonoBehaviour
         {
             transform.position += Vector3.left * movementSpeed * Time.deltaTime;
         }
+        
         if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.position += Vector3.right * movementSpeed * Time.deltaTime;
         }
+        
 
-        if (Input.GetKey(KeyCode.UpArrow) && IsGrouned())
+        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrouned())
         {
             Jump();
         }

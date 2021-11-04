@@ -342,6 +342,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/VSSettingsProvider.ref.dll"
 "Assets/CloudSpawnerScript.cs"
 "Assets/GameManager.cs"
+"Assets/PlayerDeathAndRespawn.cs"
 "Assets/Scripts/CloudMovement.cs"
 "Assets/Scripts/MainMenu.cs"
 "Assets/Scripts/PlayerOneMovement.cs"

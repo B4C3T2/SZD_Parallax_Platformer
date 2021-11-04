@@ -57,8 +57,8 @@ public class SkinManager : MonoBehaviour
     {
         if (selectedSkin1 != selectedSkin2)
         {
-            PrefabUtility.SaveAsPrefabAsset(playerskin1, "Assets/selectedskin1.prefab");
-            PrefabUtility.SaveAsPrefabAsset(playerskin2, "Assets/selectedskin2.prefab");
+            PrefabUtility.SaveAsPrefabAsset(playerskin1, "Assets/Characters/selectedskin1.prefab");
+            PrefabUtility.SaveAsPrefabAsset(playerskin2, "Assets/Characters/selectedskin2.prefab");
             SceneManager.LoadScene("Level1");
         }       
     }
