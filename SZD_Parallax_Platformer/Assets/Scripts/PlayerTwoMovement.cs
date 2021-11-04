@@ -18,7 +18,7 @@ public class PlayerTwoMovement : MonoBehaviour
     private void Update()
     {
 
-        animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+        
         if (Input.GetKey(KeyCode.A))
         {
             transform.position += Vector3.left * movementSpeed * Time.deltaTime;
@@ -27,8 +27,8 @@ public class PlayerTwoMovement : MonoBehaviour
         {
             transform.position += Vector3.right * movementSpeed * Time.deltaTime;
         }
-
-        if (Input.GetKey(KeyCode.W) && IsGrouned())
+        animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+        if (Input.GetKeyDown(KeyCode.W) && IsGrouned())
         {
             Jump();
         }
