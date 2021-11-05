@@ -12,6 +12,8 @@ public class PlayerOneMovement : MonoBehaviour
     public float jumpForce = 20f;
     public Transform feet;
     public LayerMask groundLayers;
+    public LayerMask trapLayers;
+    public GameObject spawnPoint;
 
     float mx;
 
@@ -34,6 +36,11 @@ public class PlayerOneMovement : MonoBehaviour
         {
             Jump();
         }
+
+        if(SteppedIntoTrap())
+        {
+            transform.position = spawnPoint.transform.position;
+        }
     }
 
     private void FixedUpdate()
@@ -54,6 +61,18 @@ public class PlayerOneMovement : MonoBehaviour
         Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.5f, groundLayers);
 
         if (groundCheck != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool SteppedIntoTrap()
+    {
+        Collider2D trapCheck = Physics2D.OverlapCircle(feet.position, 0.15f, trapLayers);
+
+        if (trapCheck != null)
         {
             return true;
         }
