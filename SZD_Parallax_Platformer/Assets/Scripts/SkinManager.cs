@@ -14,6 +14,8 @@ public class SkinManager : MonoBehaviour
     private int selectedSkin2 = 0;
     public GameObject playerskin1;
     public GameObject playerskin2;
+    public static int P1Id;
+    public static int P2Id;
 
     public void NextButton1()
     {
@@ -57,8 +59,10 @@ public class SkinManager : MonoBehaviour
     {
         if (selectedSkin1 != selectedSkin2)
         {
-            PrefabUtility.SaveAsPrefabAsset(playerskin1, "Assets/Characters/selectedskin1.prefab");
-            PrefabUtility.SaveAsPrefabAsset(playerskin2, "Assets/Characters/selectedskin2.prefab");
+            P1Id = selectedSkin1 + 1;
+            P2Id = selectedSkin2 + 1;
+            PrefabUtility.SaveAsPrefabAsset(playerskin1, "Assets/Prefabs/selectedskin1.prefab");
+            PrefabUtility.SaveAsPrefabAsset(playerskin2, "Assets/Prefabs/selectedskin2.prefab");
             SceneManager.LoadScene("Level1");
         }       
     }
