@@ -10340,7 +10340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5978965645838098458, guid: 942cd3d9a01eae44795f5353a7107bd9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.3
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 5978965645838098458, guid: 942cd3d9a01eae44795f5353a7107bd9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10380,11 +10380,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6771703057783725741, guid: 942cd3d9a01eae44795f5353a7107bd9, type: 3}
       propertyPath: m_Size.x
-      value: 0.74
+      value: 0.71
       objectReference: {fileID: 0}
     - target: {fileID: 6771703057783725741, guid: 942cd3d9a01eae44795f5353a7107bd9, type: 3}
       propertyPath: m_Size.y
-      value: 1.46
+      value: 1.61
       objectReference: {fileID: 0}
     - target: {fileID: 6771703057783725741, guid: 942cd3d9a01eae44795f5353a7107bd9, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -10436,7 +10436,7 @@ Animator:
   m_GameObject: {fileID: 6515026218526298027}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bf48e4f1a65a36944a074c32d91104e8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 753b619cdbd61144a8e6fab43d0a106b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10459,7 +10459,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7330171055064901368, guid: 4c5c6ced2cead2a44ae01998736e57ca, type: 3}
       propertyPath: m_Size.x
-      value: 0.74
+      value: 0.71
       objectReference: {fileID: 0}
     - target: {fileID: 7330171055064901368, guid: 4c5c6ced2cead2a44ae01998736e57ca, type: 3}
       propertyPath: m_Size.y
@@ -10487,6 +10487,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7330171055064901374, guid: 4c5c6ced2cead2a44ae01998736e57ca, type: 3}
       propertyPath: animator
+      value: 
+      objectReference: {fileID: 1407694353}
+    - target: {fileID: 7330171055064901374, guid: 4c5c6ced2cead2a44ae01998736e57ca, type: 3}
+      propertyPath: animator1
       value: 
       objectReference: {fileID: 1407694353}
     - target: {fileID: 7330171055064901374, guid: 4c5c6ced2cead2a44ae01998736e57ca, type: 3}
@@ -10527,7 +10531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7330171055064901375, guid: 4c5c6ced2cead2a44ae01998736e57ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9
+      value: -10.3
       objectReference: {fileID: 0}
     - target: {fileID: 7330171055064901375, guid: 4c5c6ced2cead2a44ae01998736e57ca, type: 3}
       propertyPath: m_LocalPosition.y

@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerOneMovement : MonoBehaviour
 {
     public Animator animator; // for animation
-
+    
+    
     public float movementSpeed;
     public Rigidbody2D rb;
 
@@ -14,29 +15,52 @@ public class PlayerOneMovement : MonoBehaviour
     public LayerMask groundLayers;
     public LayerMask trapLayers;
     public GameObject spawnPoint;
-
     float mx;
+    string horizontalvariable;
+
+    private void Start()
+    {
+        
+        if (SkinManager.P1Id == 1)
+        {
+            horizontalvariable = "Horizontal1";
+            animator.runtimeAnimatorController = Resources.Load("Aquaman") as RuntimeAnimatorController;
+        }
+        if (SkinManager.P1Id == 2)
+        {
+            horizontalvariable = "Horizontal2";
+            animator.runtimeAnimatorController = Resources.Load("Avatar") as RuntimeAnimatorController;
+        }
+        if (SkinManager.P1Id == 3)
+        {
+            horizontalvariable = "Horizontal3";
+            animator.runtimeAnimatorController = Resources.Load("Pennywise") as RuntimeAnimatorController;
+        }
+    }
 
     private void Update()
     {
-
-        animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            animator.SetFloat(horizontalvariable, Input.GetAxis("Horizontal"));
             transform.position += Vector3.left * movementSpeed * Time.deltaTime;
-        }
-        
+        }    
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.position += Vector3.right * movementSpeed * Time.deltaTime;
+            animator.SetFloat(horizontalvariable, Input.GetAxis("Horizontal"));
+            transform.position += Vector3.right * movementSpeed * Time.deltaTime;     
+
         }
-        
+        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            animator.SetFloat(horizontalvariable, 0f);
+        }
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrouned())
         {
             Jump();
         }
-
+        
         if(SteppedIntoTrap())
         {
             transform.position = spawnPoint.transform.position;

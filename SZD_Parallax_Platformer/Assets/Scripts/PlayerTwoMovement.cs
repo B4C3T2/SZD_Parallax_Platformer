@@ -13,26 +13,49 @@ public class PlayerTwoMovement : MonoBehaviour
     public Transform feet;
     public LayerMask groundLayers;
     public LayerMask trapLayers;
-
     public GameObject spawnPoint;
-
     float mx;
+    string horizontalvariable;
 
-    private void Update()
+    private void Start()
     {
-
-        
+        if (SkinManager.P2Id == 1)
+        {
+            horizontalvariable = "Horizontal1";
+            animator.runtimeAnimatorController = Resources.Load("Aquaman") as RuntimeAnimatorController;
+        }
+        if (SkinManager.P2Id == 2)
+        {
+            horizontalvariable = "Horizontal2";
+            animator.runtimeAnimatorController = Resources.Load("Avatar") as RuntimeAnimatorController;
+        }
+        if (SkinManager.P2Id == 3)
+        {
+            horizontalvariable = "Horizontal3";
+            animator.runtimeAnimatorController = Resources.Load("Pennywise") as RuntimeAnimatorController;
+        }
+    }
+        private void Update()
+    {     
         if (Input.GetKey(KeyCode.A))
         {
+            animator.SetFloat("Horizontal2", Input.GetAxis("Horizontal"));
             transform.position += Vector3.left * movementSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
+            animator.SetFloat("Horizontal2", Input.GetAxis("Horizontal"));
             transform.position += Vector3.right * movementSpeed * Time.deltaTime;
+            
         }
-        animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        {
+            animator.SetFloat("Horizontal2", 0f);
+        }
+
         if (Input.GetKeyDown(KeyCode.W) && IsGrouned())
         {
+           
             Jump();
         }
         
