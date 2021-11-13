@@ -5,10 +5,8 @@ using UnityEngine;
 public class PlayerTwoMovement : MonoBehaviour
 {
     public Animator animator; // for animation
-
     public float movementSpeed;
     public Rigidbody2D rb;
-
     public float jumpForce = 20f;
     public Transform feet;
     public LayerMask groundLayers;
@@ -35,27 +33,26 @@ public class PlayerTwoMovement : MonoBehaviour
             animator.runtimeAnimatorController = Resources.Load("Pennywise") as RuntimeAnimatorController;
         }
     }
-        private void Update()
+    private void Update()
     {     
         if (Input.GetKey(KeyCode.A))
         {
-            animator.SetFloat("Horizontal2", Input.GetAxis("Horizontal"));
+            animator.SetFloat(horizontalvariable, Input.GetAxis("Horizontal"));
             transform.position += Vector3.left * movementSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            animator.SetFloat("Horizontal2", Input.GetAxis("Horizontal"));
+            animator.SetFloat(horizontalvariable, Input.GetAxis("Horizontal"));
             transform.position += Vector3.right * movementSpeed * Time.deltaTime;
             
         }
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
         {
-            animator.SetFloat("Horizontal2", 0f);
+            animator.SetFloat(horizontalvariable, 0f);
         }
 
         if (Input.GetKeyDown(KeyCode.W) && IsGrouned())
-        {
-           
+        {       
             Jump();
         }
         

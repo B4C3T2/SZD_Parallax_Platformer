@@ -5,11 +5,8 @@ using UnityEngine;
 public class PlayerOneMovement : MonoBehaviour
 {
     public Animator animator; // for animation
-    
-    
     public float movementSpeed;
     public Rigidbody2D rb;
-
     public float jumpForce = 20f;
     public Transform feet;
     public LayerMask groundLayers;
@@ -20,7 +17,6 @@ public class PlayerOneMovement : MonoBehaviour
 
     private void Start()
     {
-        
         if (SkinManager.P1Id == 1)
         {
             horizontalvariable = "Horizontal1";
@@ -37,7 +33,6 @@ public class PlayerOneMovement : MonoBehaviour
             animator.runtimeAnimatorController = Resources.Load("Pennywise") as RuntimeAnimatorController;
         }
     }
-
     private void Update()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
