@@ -10,13 +10,11 @@ public class SoundManager : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("MusicTune"))
         {
-            PlayerPrefs.SetFloat("MusicTune", 1);
+            PlayerPrefs.SetFloat("MusicTune", 1f);
             Load();
         }
         else
-            Load();
-
-        
+            Load();       
     }
     public void VolumeChanging()
     {
