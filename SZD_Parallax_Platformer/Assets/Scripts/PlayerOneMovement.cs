@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerOneMovement : MonoBehaviour
 {
@@ -8,9 +9,10 @@ public class PlayerOneMovement : MonoBehaviour
     public float movementSpeed;
     public Rigidbody2D rb;
     public float jumpForce = 20f;
-    public Transform feet;
+    public Transform feet, head, left, right;
     public LayerMask groundLayers;
     public LayerMask trapLayers;
+    public LayerMask endLayers;
     public GameObject spawnPoint;
     float mx;
     string horizontalvariable;
@@ -60,6 +62,12 @@ public class PlayerOneMovement : MonoBehaviour
         {
             transform.position = spawnPoint.transform.position;
         }
+
+        if(Ended())
+        {
+            //todo p1 point++; refresh ui;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     private void FixedUpdate()
@@ -89,9 +97,28 @@ public class PlayerOneMovement : MonoBehaviour
 
     public bool SteppedIntoTrap()
     {
-        Collider2D trapCheck = Physics2D.OverlapCircle(feet.position, 0.15f, trapLayers);
+        List<Collider2D> trapCheck = new List<Collider2D>();
+        trapCheck.Add(Physics2D.OverlapCircle(feet.position, 0.15f, trapLayers));
+        //trapCheck.Add(Physics2D.OverlapCircle(head.position, 0.15f, trapLayers));
+        //trapCheck.Add(Physics2D.OverlapCircle(left.position, 0.15f, trapLayers));
+        //trapCheck.Add(Physics2D.OverlapCircle(right.position, 0.15f, trapLayers));
 
-        if (trapCheck != null)
+        foreach (Collider2D item in trapCheck)
+        {
+            if(item == null)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public bool Ended()
+    {
+        Collider2D endCheck = Physics2D.OverlapCircle(feet.position, 0.15f, endLayers);
+
+        if (endCheck != null)
         {
             return true;
         }

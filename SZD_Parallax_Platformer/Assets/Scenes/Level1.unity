@@ -2128,7 +2128,7 @@ GameObject:
   - component: {fileID: 379128627}
   - component: {fileID: 379128626}
   - component: {fileID: 379128625}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Platform (18)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -10363,6 +10363,9 @@ MonoBehaviour:
   trapLayers:
     serializedVersion: 2
     m_Bits: 128
+  endLayers:
+    serializedVersion: 2
+    m_Bits: 256
   spawnPoint: {fileID: 2011363195}
 --- !u!95 &6515026218526298029
 Animator:
@@ -10446,6 +10449,10 @@ PrefabInstance:
     - target: {fileID: 7330171055064901374, guid: 4c5c6ced2cead2a44ae01998736e57ca, type: 3}
       propertyPath: movementSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7330171055064901374, guid: 4c5c6ced2cead2a44ae01998736e57ca, type: 3}
+      propertyPath: endLayers.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7330171055064901374, guid: 4c5c6ced2cead2a44ae01998736e57ca, type: 3}
       propertyPath: trapLayers.m_Bits
