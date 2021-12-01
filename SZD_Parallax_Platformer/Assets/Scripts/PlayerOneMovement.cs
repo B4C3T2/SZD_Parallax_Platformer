@@ -78,7 +78,7 @@ public class PlayerOneMovement : MonoBehaviour
     public bool IsGrouned()
     {
         Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.5f, groundLayers);
-
+        
         if (groundCheck != null)
         {
             return true;
