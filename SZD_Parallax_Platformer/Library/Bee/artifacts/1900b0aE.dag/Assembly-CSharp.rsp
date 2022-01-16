@@ -344,6 +344,7 @@
 "Assets/Scripts/CloudMovement.cs"
 "Assets/Scripts/CloudSpawnerScript.cs"
 "Assets/Scripts/MainMenu.cs"
+"Assets/Scripts/MovingSpikeScript.cs"
 "Assets/Scripts/Music.cs"
 "Assets/Scripts/PlatformMovement.cs"
 "Assets/Scripts/PlayerDeathAndRespawn.cs"
