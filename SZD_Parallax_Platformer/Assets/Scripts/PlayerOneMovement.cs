@@ -99,19 +99,19 @@ public class PlayerOneMovement : MonoBehaviour
     {
         List<Collider2D> trapCheck = new List<Collider2D>();
         trapCheck.Add(Physics2D.OverlapCircle(feet.position, 0.15f, trapLayers));
-        //trapCheck.Add(Physics2D.OverlapCircle(head.position, 0.15f, trapLayers));
-        //trapCheck.Add(Physics2D.OverlapCircle(left.position, 0.15f, trapLayers));
-        //trapCheck.Add(Physics2D.OverlapCircle(right.position, 0.15f, trapLayers));
+        trapCheck.Add(Physics2D.OverlapCircle(head.position, 0.15f, trapLayers));
+        trapCheck.Add(Physics2D.OverlapCircle(left.position, 0.15f, trapLayers));
+        trapCheck.Add(Physics2D.OverlapCircle(right.position, 0.15f, trapLayers));
 
         foreach (Collider2D item in trapCheck)
         {
-            if(item == null)
+            if(item != null)
             {
-                return false;
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 
     public bool Ended()
