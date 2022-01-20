@@ -13,6 +13,7 @@ public class PlayerTwoMovement : MonoBehaviour
     public LayerMask groundLayers;
     public LayerMask trapLayers;
     public LayerMask endLayers;
+    public List<GameObject> archs;
     public GameObject spawnPoint;
     float mx;
     string horizontalvariable;
@@ -63,7 +64,12 @@ public class PlayerTwoMovement : MonoBehaviour
             transform.position = spawnPoint.transform.position;
         }
 
-        if(Ended())
+        if (Input.GetKeyDown(KeyCode.S) && InArch())
+        {
+            Transfer();
+        }
+
+        if (Ended())
         {
             //todo p2 point++; refresh ui;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -95,6 +101,21 @@ public class PlayerTwoMovement : MonoBehaviour
         return false;
     }
 
+    public bool InArch()
+    {
+        foreach (var arch in archs)
+        {
+            if (transform.position.x <= arch.transform.position.x + 0.1f &&
+                transform.position.x > arch.transform.position.x - 0.1f)
+            {
+                return true;
+            }
+        }
+
+
+        return false;
+    }
+
     public bool SteppedIntoTrap()
     {
         List<Collider2D> trapCheck = new List<Collider2D>();
@@ -112,6 +133,15 @@ public class PlayerTwoMovement : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void Transfer()
+    {
+        if (transform.position.z == 0)
+            transform.position += new Vector3(0f, 0f, 2f);
+
+        else
+            transform.position -= new Vector3(0f, 0f, 2f);
     }
 
     public bool Ended()
