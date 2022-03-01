@@ -64,6 +64,7 @@ public class SkinManager : MonoBehaviour
             PrefabUtility.SaveAsPrefabAsset(playerskin1, "Assets/Prefabs/selectedskin1.prefab");
             PrefabUtility.SaveAsPrefabAsset(playerskin2, "Assets/Prefabs/selectedskin2.prefab");
             SceneManager.LoadScene("Level1");
+            
         }       
     }
     public void BackMenu()
