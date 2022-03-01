@@ -354,6 +354,7 @@
 "Assets/Scripts/SawScript.cs"
 "Assets/Scripts/SkinManager.cs"
 "Assets/Scripts/SoundManager.cs"
+"Assets/Scripts/TimerManager.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"
