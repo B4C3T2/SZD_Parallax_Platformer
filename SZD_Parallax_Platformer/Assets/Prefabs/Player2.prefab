@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7257017662198848647}
   m_Layer: 0
   m_Name: Player2
-  m_TagString: Player
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,13 +146,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1651814a86ffaa9498a9e8d48ade7331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   movementSpeed: 10
   rb: {fileID: 2803657435136303251}
   jumpForce: 15
   feet: {fileID: 4215362545667942154}
+  head: {fileID: 0}
+  left: {fileID: 0}
+  right: {fileID: 0}
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
+  trapLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  endLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  archs: []
+  spawnPoint: {fileID: 0}
 --- !u!1 &3364046736464378320
 GameObject:
   m_ObjectHideFlags: 0
