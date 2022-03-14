@@ -14,7 +14,9 @@ public class TimerManager : MonoBehaviour
     {
         get { return timerIsCounting; }
     }
-    private double elapsedTime;
+    private double elapsedTime = 0f;
+
+    
 
     private void Awake()
     {
@@ -22,19 +24,19 @@ public class TimerManager : MonoBehaviour
     }
 
     public void Start()
-    {
-        timerManager.text = "Time: 00:00";
+    {   
+        
+        timerManager.text = string.Format("Timer: " + TimeSpan.FromSeconds(elapsedTime).ToString("mm':'ss"));
         timerIsCounting = false;
+        
     }
 
     public void TimerStarted()
     {
-        timerIsCounting = true;
-        elapsedTime = 0f;
-
+        timerIsCounting = true; 
         StartCoroutine(UpdateTimer());
     }
-
+    
     public void EndTimer()
     {
         timerIsCounting = false;
@@ -45,7 +47,7 @@ public class TimerManager : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             time = TimeSpan.FromSeconds(elapsedTime);
-            string timeString = "Time: " + time.ToString("mm':'ss");
+            string timeString = "Timer: " + time.ToString("mm':'ss");
             timerManager.text = timeString;
 
             yield return null;

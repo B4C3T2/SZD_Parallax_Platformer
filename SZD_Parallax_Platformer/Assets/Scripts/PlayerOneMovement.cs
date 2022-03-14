@@ -57,8 +57,10 @@ public class PlayerOneMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrouned())
         {
             Jump();
-            if(TimerManager.instance.TimerIsCounting == false)
-            TimerManager.instance.TimerStarted();
+            if (TimerManager.instance.TimerIsCounting == false)
+                TimerManager.instance.TimerStarted();
+
+
         }
         
         if(SteppedIntoTrap())
