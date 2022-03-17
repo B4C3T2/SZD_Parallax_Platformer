@@ -14,27 +14,39 @@ public class TimerManager : MonoBehaviour
     {
         get { return timerIsCounting; }
     }
-    private double elapsedTime = 0f;
+    private double elapsedTime;
 
     
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(timerManager.gameObject);
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+            Destroy(timerManager.gameObject);
+        }
+        
     }
 
     public void Start()
-    {   
-        
-        timerManager.text = string.Format("Timer: " + TimeSpan.FromSeconds(elapsedTime).ToString("mm':'ss"));
-        timerIsCounting = false;
-        
+    {
+        TimerStarted();
+        //timerManager.text = string.Format("Timer: " + TimeSpan.FromSeconds(elapsedTime).ToString("mm':'ss"));
+
     }
 
     public void TimerStarted()
     {
-        timerIsCounting = true; 
+        timerIsCounting = true;
+        elapsedTime = 0f;
         StartCoroutine(UpdateTimer());
+        
     }
     
     public void EndTimer()
