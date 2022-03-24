@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI Text_hu
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: hu
+  m_SharedData: {fileID: 11400000, guid: e7f4e97525ac1fd40bf7e1072df2ef98, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 499096662016
+    m_Localized: "J\xC1T\xC9K"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1695110836224
+    m_Localized: "BE\xC1LL\xCDT\xC1SOK"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1699607130112
+    m_Localized: "KIL\xC9P\xC9S"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394418753536
+    m_Localized: Hang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2426572288000
+    m_Localized: Vissza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2633703796736
+    m_Localized: "El\u0151z\u0151"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2737680592896
+    m_Localized: "K\xF6vetkez\u0151"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2931126087680
+    m_Localized: "Id\u0151 futam"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3573211115520
+    m_Localized: "Vissza a men\xFCbe"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3706577399808
+    m_Localized: "Kil\xE9p\xE9s a j\xE1t\xE9kb\xF3l"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6606024257536
+    m_Localized: "J\xE1t\xE9kos1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6746428583936
+    m_Localized: "J\xE1t\xE9kos2"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9542804615168
+    m_Localized: Nyelv
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

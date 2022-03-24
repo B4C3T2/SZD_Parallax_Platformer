@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-String-Tables-Hungarian (hu)
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-String-Tables-Hungarian (hu)
+  m_Data:
+    m_SerializedData: []
+  m_GUID: bdb98d418c8c34c498e7a92f4a139c0c
+  m_SerializeEntries:
+  - m_GUID: 84927c9987b5b48498ed77dd0eafedfb
+    m_Address: UI Text_hu
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hu
+    - Preload
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: 0b39716bb05e01a469f6bd373304e11b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e048a641556a334439c1f4ab0686af40, type: 2}
+    - {fileID: 11400000, guid: 1f69ac3de3456af46836d32233dd7b79, type: 2}
