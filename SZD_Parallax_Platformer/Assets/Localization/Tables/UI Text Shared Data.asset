@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: UI Text Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: UI Text
+  m_TableCollectionNameGuidString: e7f4e97525ac1fd40bf7e1072df2ef98
+  m_Entries:
+  - m_Id: 499096662016
+    m_Key: StartButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1695110836224
+    m_Key: OptionsButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1699607130112
+    m_Key: QuitButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394418753536
+    m_Key: VolumeText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2426572288000
+    m_Key: BackButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2633703796736
+    m_Key: PreviousButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2737680592896
+    m_Key: NextButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2931126087680
+    m_Key: TimeRushButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3573211115520
+    m_Key: BackToMenuButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3706577399808
+    m_Key: QuitGameButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6606024257536
+    m_Key: Player1Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6746428583936
+    m_Key: Player2Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9542804615168
+    m_Key: LanguageText
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1648113174705
