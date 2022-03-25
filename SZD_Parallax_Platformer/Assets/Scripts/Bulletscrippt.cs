@@ -8,6 +8,8 @@ public class Bulletscrippt : MonoBehaviour
     private GameObject target;
     private Vector2 targetLocation;
     public LayerMask groundLayers;
+    private float distance;
+    private Vector2 direction;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,7 @@ public class Bulletscrippt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         transform.position = Vector2.MoveTowards(transform.position, targetLocation, 4 * Time.deltaTime);
         if ((transform.position.x == targetLocation.x && transform.position.y == targetLocation.y) ||
             HitGround())
