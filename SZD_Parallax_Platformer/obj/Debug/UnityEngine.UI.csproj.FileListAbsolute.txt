@@ -286,3 +286,4 @@ D:\Egyetem\Szakdolgozat\SZD_Parallax_Platformer\SZD_Parallax_Platformer\obj\Debu
 D:\Egyetem\Szakdolgozat\SZD_Parallax_Platformer\SZD_Parallax_Platformer\obj\Debug\UnityEngine.UI.csproj.CopyComplete
 D:\Egyetem\Szakdolgozat\SZD_Parallax_Platformer\SZD_Parallax_Platformer\obj\Debug\UnityEngine.UI.dll
 D:\Egyetem\Szakdolgozat\SZD_Parallax_Platformer\SZD_Parallax_Platformer\obj\Debug\UnityEngine.UI.pdb
+D:\Egyetem\Szakdolgozat\SZD_Parallax_Platformer\SZD_Parallax_Platformer\Temp\Bin\Debug\Newtonsoft.Json.dll
