@@ -42,9 +42,16 @@ public class CanonScript : MonoBehaviour
 
     private GameObject PlayerCloser()
     {
-        float player1distance = Vector3.Distance(player1.transform.position, transform.position);
-        float player2distance = Vector3.Distance(player2.transform.position, transform.position);
+        float player1distance = CalculateDistance(player1.transform, transform);
+        float player2distance = CalculateDistance(player2.transform, transform);
 
         return (player1distance < player2distance) ? player1 : player2;
+    }
+
+    private float CalculateDistance(Transform p1, Transform p2)
+    {
+        return (float)Math.Sqrt(
+                        Math.Pow(p2.position.x - p1.position.x, 2) +
+                        Math.Pow(p2.position.y - p1.position.y, 2));
     }
 }

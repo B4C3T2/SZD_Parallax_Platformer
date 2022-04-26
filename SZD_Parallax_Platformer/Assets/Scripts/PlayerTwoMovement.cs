@@ -20,6 +20,11 @@ public class PlayerTwoMovement : MonoBehaviour
 
     private void Start()
     {
+        Physics2D.IgnoreLayerCollision(13, 3, false);
+        Physics2D.IgnoreLayerCollision(13, 7, false);
+        Physics2D.IgnoreLayerCollision(13, 10, true);
+        Physics2D.IgnoreLayerCollision(13, 12, true);
+
         if (SkinManager.P2Id == 1)
         {
             horizontalvariable = "Horizontal1";
@@ -61,6 +66,8 @@ public class PlayerTwoMovement : MonoBehaviour
         
         if(SteppedIntoTrap())
         {
+            if (transform.position.z == 2)
+                Transfer();
             transform.position = spawnPoint.transform.position;
         }
 
@@ -138,10 +145,21 @@ public class PlayerTwoMovement : MonoBehaviour
     public void Transfer()
     {
         if (transform.position.z == 0)
+        {
             transform.position += new Vector3(0f, 0f, 2f);
-
+            Physics2D.IgnoreLayerCollision(13, 3, true);
+            Physics2D.IgnoreLayerCollision(13, 7, true);
+            Physics2D.IgnoreLayerCollision(13, 10, false);
+            Physics2D.IgnoreLayerCollision(13, 12, false);
+        }
         else
+        {
             transform.position -= new Vector3(0f, 0f, 2f);
+            Physics2D.IgnoreLayerCollision(13 , 3, false);
+            Physics2D.IgnoreLayerCollision(13 , 7, false);
+            Physics2D.IgnoreLayerCollision(13 , 10, true);
+            Physics2D.IgnoreLayerCollision(13 , 12, true);
+        }
     }
 
     public bool Ended()
