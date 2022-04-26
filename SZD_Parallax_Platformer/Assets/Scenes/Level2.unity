@@ -4011,7 +4011,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 459517128}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -4151,7 +4151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 484044457}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -4944,7 +4944,7 @@ MonoBehaviour:
   - {fileID: 4860693197627456877, guid: d8a8c317efe799e45a42cc0b420bc97b, type: 3}
   - {fileID: 239737070065030151, guid: 6e9446fd206a66c47bb31f5d51cd80e9, type: 3}
   - {fileID: 5213982750544258156, guid: c941c11be8253f34ea72f3c17cb16ec1, type: 3}
-  spawnInterval: 3
+  spawnRate: 1
   endpoint: {fileID: 173045193}
 --- !u!1 &679126696
 GameObject:
@@ -11294,6 +11294,10 @@ PrefabInstance:
       value: Player2
       objectReference: {fileID: 0}
     - target: {fileID: 593397229610657393, guid: 942cd3d9a01eae44795f5353a7107bd9, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 593397229610657393, guid: 942cd3d9a01eae44795f5353a7107bd9, type: 3}
       propertyPath: m_TagString
       value: Player2
       objectReference: {fileID: 0}
@@ -11313,6 +11317,10 @@ PrefabInstance:
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 3364046736464378320, guid: 942cd3d9a01eae44795f5353a7107bd9, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 4215362545667942154, guid: 942cd3d9a01eae44795f5353a7107bd9, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -14756,10 +14764,10 @@ MonoBehaviour:
   right: {fileID: 459517128}
   groundLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1032
   trapLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 4224
   endLayers:
     serializedVersion: 2
     m_Bits: 256
@@ -15748,7 +15756,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2107742449}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
