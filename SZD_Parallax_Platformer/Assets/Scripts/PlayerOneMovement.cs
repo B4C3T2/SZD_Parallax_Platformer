@@ -20,6 +20,11 @@ public class PlayerOneMovement : MonoBehaviour
 
     private void Start()
     {
+        Physics2D.IgnoreLayerCollision(11, 3, false);
+        Physics2D.IgnoreLayerCollision(11, 7, false);
+        Physics2D.IgnoreLayerCollision(11, 10, true);
+        Physics2D.IgnoreLayerCollision(11, 12, true);
+
         if (SkinManager.P1Id == 1)
         {
             horizontalvariable = "Horizontal1";
@@ -61,6 +66,8 @@ public class PlayerOneMovement : MonoBehaviour
         
         if(SteppedIntoTrap())
         {
+            if (transform.position.z == 2)
+                Transfer();
             transform.position = spawnPoint.transform.position;
         }
 
@@ -92,7 +99,7 @@ public class PlayerOneMovement : MonoBehaviour
     public bool IsGrouned()
     {
         Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.5f, groundLayers);
-        
+
         if (groundCheck != null)
         {
             return true;
@@ -137,10 +144,21 @@ public class PlayerOneMovement : MonoBehaviour
     public void Transfer()
     {
         if (transform.position.z == 0)
+        {
             transform.position += new Vector3(0f, 0f, 2f);
-
+            Physics2D.IgnoreLayerCollision(11, 3, true);
+            Physics2D.IgnoreLayerCollision(11, 7, true);
+            Physics2D.IgnoreLayerCollision(11, 10, false);
+            Physics2D.IgnoreLayerCollision(11, 12, false);
+        }
         else
+        {
             transform.position -= new Vector3(0f, 0f, 2f);
+            Physics2D.IgnoreLayerCollision(11, 3, false);
+            Physics2D.IgnoreLayerCollision(11, 7, false);
+            Physics2D.IgnoreLayerCollision(11, 10, true);
+            Physics2D.IgnoreLayerCollision(11, 12, true);
+        }
     }
 
     public bool Ended()
