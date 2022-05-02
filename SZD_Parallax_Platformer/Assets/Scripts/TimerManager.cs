@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +17,6 @@ public class TimerManager : MonoBehaviour
     }
     private double elapsedTime;
 
-    
 
     private void Awake()
     {
@@ -43,8 +43,10 @@ public class TimerManager : MonoBehaviour
 
     public void TimerStarted()
     {
+        StreamReader sr = new StreamReader(Application.persistentDataPath + "/Value.txt");
         timerIsCounting = true;
-        elapsedTime = 0f;
+        elapsedTime = double.Parse(sr.ReadLine());
+        sr.Close();
         StartCoroutine(UpdateTimer());
         
     }
@@ -60,6 +62,9 @@ public class TimerManager : MonoBehaviour
             elapsedTime += Time.deltaTime;
             time = TimeSpan.FromSeconds(elapsedTime);
             string timeString = "Timer: " + time.ToString("mm':'ss");
+            StreamWriter sw = new StreamWriter(Application.persistentDataPath + "/Value.txt");
+            sw.Write(elapsedTime);
+            sw.Close();
             timerManager.text = timeString;
 
             yield return null;
