@@ -36,7 +36,15 @@ public class TimerManager : MonoBehaviour
 
     public void Start()
     {
-        TimerStarted();
+        StreamReader sr = new StreamReader(Application.persistentDataPath + "/Value.txt");
+        sr.ReadLine();
+        if(sr.ReadLine() == "TimeRush")
+        {
+            sr.Close();
+            TimerStarted();
+        }
+            
+        
         //timerManager.text = string.Format("Timer: " + TimeSpan.FromSeconds(elapsedTime).ToString("mm':'ss"));
 
     }
@@ -59,12 +67,15 @@ public class TimerManager : MonoBehaviour
     {
         while (timerIsCounting)
         {
+            
             elapsedTime += Time.deltaTime;
             time = TimeSpan.FromSeconds(elapsedTime);
             string timeString = "Timer: " + time.ToString("mm':'ss");
-            StreamWriter sw = new StreamWriter(Application.persistentDataPath + "/Value.txt");
-            sw.Write(elapsedTime);
-            sw.Close();
+            string file = Application.persistentDataPath + "/Value.txt";
+            string[] array = System.IO.File.ReadAllLines(file);
+            array[0] = elapsedTime.ToString();
+            System.IO.File.WriteAllLines(file, array);
+            print("Lófasz");
             timerManager.text = timeString;
 
             yield return null;

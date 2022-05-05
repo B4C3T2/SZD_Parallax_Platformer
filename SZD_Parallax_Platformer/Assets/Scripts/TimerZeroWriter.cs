@@ -8,16 +8,20 @@ public class TimerZeroWriter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        string file = Application.persistentDataPath + "/Value.txt";
+        print("Print to: " + file);
+        string[] array = System.IO.File.ReadAllLines(file);
+        array[0] = "0";
+        array[2] = "0";
+        array[3] = "0";
+        System.IO.File.WriteAllLines(file,array);
+
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        string file = Application.persistentDataPath + "/Value.txt";
-        print("Print to: " + file);
-        StreamWriter sw = new StreamWriter(file);
-        sw.Write("0");
-        sw.Close();
+       
     }
 }
