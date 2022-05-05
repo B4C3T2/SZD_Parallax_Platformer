@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
-
+using System.IO;
 
 public class SkinManager : MonoBehaviour
 {
@@ -16,7 +16,8 @@ public class SkinManager : MonoBehaviour
     public GameObject playerskin2;
     public static int P1Id;
     public static int P2Id;
-
+    
+    
     public void NextButton1()
     {
         selectedSkin1 = selectedSkin1 + 1;
@@ -55,7 +56,7 @@ public class SkinManager : MonoBehaviour
         sr2.sprite = skins[selectedSkin2];
     }
 
-    public void PlayGame()
+    public void PlayGameFaceToFace()
     {
         if (selectedSkin1 != selectedSkin2)
         {
@@ -63,9 +64,29 @@ public class SkinManager : MonoBehaviour
             P2Id = selectedSkin2 + 1;
             PrefabUtility.SaveAsPrefabAsset(playerskin1, "Assets/Prefabs/selectedskin1.prefab");
             PrefabUtility.SaveAsPrefabAsset(playerskin2, "Assets/Prefabs/selectedskin2.prefab");
+            string file = Application.persistentDataPath + "/Value.txt";
+            string[] array = System.IO.File.ReadAllLines(file);
+            array[1] = "FaceToFace";
+            System.IO.File.WriteAllLines(file, array);
+
             SceneManager.LoadScene("Level1");
-            
         }       
+    }
+    public void PlayGameTimeRush()
+    {
+        if (selectedSkin1 != selectedSkin2)
+        {
+            P1Id = selectedSkin1 + 1;
+            P2Id = selectedSkin2 + 1;
+            PrefabUtility.SaveAsPrefabAsset(playerskin1, "Assets/Prefabs/selectedskin1.prefab");
+            PrefabUtility.SaveAsPrefabAsset(playerskin2, "Assets/Prefabs/selectedskin2.prefab");
+            string file = Application.persistentDataPath + "/Value.txt";
+            string[] array = System.IO.File.ReadAllLines(file);
+            array[1] = "TimeRush";
+            System.IO.File.WriteAllLines(file, array);
+
+            SceneManager.LoadScene("Level1");
+        }
     }
     public void BackMenu()
     {

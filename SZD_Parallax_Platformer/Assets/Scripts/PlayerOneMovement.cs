@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerOneMovement : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class PlayerOneMovement : MonoBehaviour
     public LayerMask groundLayers;
     public LayerMask trapLayers;
     public LayerMask endLayers;
+    public Text scoreManager;
     public List<GameObject> archs;
     public GameObject spawnPoint;
     float mx;
@@ -24,7 +27,14 @@ public class PlayerOneMovement : MonoBehaviour
         Physics2D.IgnoreLayerCollision(11, 7, false);
         Physics2D.IgnoreLayerCollision(11, 10, true);
         Physics2D.IgnoreLayerCollision(11, 12, true);
-
+        StreamReader sr = new StreamReader(Application.persistentDataPath + "/Value.txt");
+        sr.ReadLine();
+        if (sr.ReadLine() == "FaceToFace")
+        {
+            sr.Close();
+            scoreManager.text = "P1: 0";
+        }
+        sr.Close();
         if (SkinManager.P1Id == 1)
         {
             horizontalvariable = "Horizontal1";
@@ -78,7 +88,18 @@ public class PlayerOneMovement : MonoBehaviour
 
         if (Ended())
         {
-            //todo p1 point++; refresh ui;
+            StreamReader sr = new StreamReader(Application.persistentDataPath + "/Value.txt");
+            sr.ReadLine();
+            if (sr.ReadLine() == "FaceToFace")
+            {
+                sr.Close();
+                string file = Application.persistentDataPath + "/Value.txt";
+                string[] array = System.IO.File.ReadAllLines(file);
+                array[2] = (int.Parse(array[2]) + 1).ToString();
+                System.IO.File.WriteAllLines(file, array);
+                scoreManager.text = "P1: " + array[2];
+            }
+            sr.Close();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
