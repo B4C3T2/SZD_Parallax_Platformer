@@ -13,7 +13,8 @@ public class PlayerOneMovement : MonoBehaviour
     public float jumpForce = 20f;
     public Transform feet, head, left, right;
     public LayerMask groundLayers;
-    public LayerMask trapLayers;
+    public List<LayerMask> trapLayers;
+    private LayerMask currentTrapLayer;
     public LayerMask endLayers;
     public Text scoreManager;
     public List<GameObject> archs;
@@ -23,6 +24,7 @@ public class PlayerOneMovement : MonoBehaviour
 
     private void Start()
     {
+        currentTrapLayer = trapLayers[0];
         Physics2D.IgnoreLayerCollision(11, 3, false);
         Physics2D.IgnoreLayerCollision(11, 7, false);
         Physics2D.IgnoreLayerCollision(11, 10, true);
@@ -146,10 +148,10 @@ public class PlayerOneMovement : MonoBehaviour
     public bool SteppedIntoTrap()
     {
         List<Collider2D> trapCheck = new List<Collider2D>();
-        trapCheck.Add(Physics2D.OverlapCircle(feet.position, 0.15f, trapLayers));
-        trapCheck.Add(Physics2D.OverlapCircle(head.position, 0.15f, trapLayers));
-        trapCheck.Add(Physics2D.OverlapCircle(left.position, 0.15f, trapLayers));
-        trapCheck.Add(Physics2D.OverlapCircle(right.position, 0.15f, trapLayers));
+        trapCheck.Add(Physics2D.OverlapCircle(feet.position, 0.15f, currentTrapLayer));
+        trapCheck.Add(Physics2D.OverlapCircle(head.position, 0.15f, currentTrapLayer));
+        trapCheck.Add(Physics2D.OverlapCircle(left.position, 0.15f, currentTrapLayer));
+        trapCheck.Add(Physics2D.OverlapCircle(right.position, 0.15f, currentTrapLayer));
 
         foreach (Collider2D item in trapCheck)
         {
@@ -171,6 +173,7 @@ public class PlayerOneMovement : MonoBehaviour
             Physics2D.IgnoreLayerCollision(11, 7, true);
             Physics2D.IgnoreLayerCollision(11, 10, false);
             Physics2D.IgnoreLayerCollision(11, 12, false);
+            currentTrapLayer = trapLayers[1];
         }
         else
         {
@@ -179,6 +182,7 @@ public class PlayerOneMovement : MonoBehaviour
             Physics2D.IgnoreLayerCollision(11, 7, false);
             Physics2D.IgnoreLayerCollision(11, 10, true);
             Physics2D.IgnoreLayerCollision(11, 12, true);
+            currentTrapLayer = trapLayers[0];
         }
     }
 
