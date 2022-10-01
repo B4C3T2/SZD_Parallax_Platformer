@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollectManager : MonoBehaviour
 {
-    /*private bool isCollected = false;
+    private bool isCollected = false;
 
     public bool Collect()
     {
@@ -15,5 +15,5 @@ public class CollectManager : MonoBehaviour
         Destroy(gameObject);
         return true;
     }
-    */
+    
 }
