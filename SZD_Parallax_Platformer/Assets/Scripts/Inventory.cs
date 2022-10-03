@@ -8,16 +8,20 @@ public class Inventory : MonoBehaviour
     {
         if (other.CompareTag("Collectable"))
         {
-            Collect(other.GetComponent<CollectManager>());
+            Collected(other.GetComponent<CollectManager>());
         }
     }
 
-    private void Collect(CollectManager col)
+    private void Collected(CollectManager col)
     {
         if (col.Collect())
         {
             if (col is CollectedKey)
+            {
                 Debug.Log("Key collected");
+                //col.ReplaceKey();
+            }
+            
         }
     }
 }
