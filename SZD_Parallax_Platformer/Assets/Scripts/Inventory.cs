@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour
             if (col is CollectedKey)
             {
                 Debug.Log("Key collected");
-                //col.ReplaceKey();
+                col.ReplaceKey();
             }
             
         }

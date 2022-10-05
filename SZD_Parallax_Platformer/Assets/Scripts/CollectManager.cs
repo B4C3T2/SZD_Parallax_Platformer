@@ -5,28 +5,26 @@ using UnityEngine;
 public class CollectManager : MonoBehaviour
 {
     private bool isCollected = false;
-    //Vector3 keyPos;
-    public int countDown = 5;
     public int zero = 0;
     public bool Collect()
     {
         if (isCollected)
-            return false;
-       
+            return false;      
         isCollected = true;
-        Destroy(gameObject);
-        return true; 
-        
+        gameObject.transform.position += new Vector3(0f, 0f, 5f);
+        return true;       
     }
-    /*public void ReplaceKey()
+    public void ReplaceKey()
     {
-        Wait();               
-        Instantiate(gameObject);
+        StartCoroutine(Wait());      
     }
-    IEnumerator Wait()   
-    {
-        yield return new WaitForSeconds(5);
-    }*/
-    
-    
+    private IEnumerator Wait()
+    {  
+        yield return new WaitForSeconds(5f);
+        gameObject.transform.position -= new Vector3(0f, 0f, 5f);
+        isCollected = false;
+    }
+
+
+
 }
