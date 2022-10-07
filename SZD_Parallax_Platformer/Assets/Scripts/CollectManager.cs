@@ -11,7 +11,7 @@ public class CollectManager : MonoBehaviour
         if (isCollected)
             return false;      
         isCollected = true;
-        gameObject.transform.position += new Vector3(0f, 0f, 5f);
+        gameObject.transform.position += new Vector3(0f, 0f, 7f);
         return true;       
     }
     public void ReplaceKey()
@@ -21,7 +21,7 @@ public class CollectManager : MonoBehaviour
     private IEnumerator Wait()
     {  
         yield return new WaitForSeconds(5f);
-        gameObject.transform.position -= new Vector3(0f, 0f, 5f);
+        gameObject.transform.position -= new Vector3(0f, 0f, 7f);
         isCollected = false;
     }
 
