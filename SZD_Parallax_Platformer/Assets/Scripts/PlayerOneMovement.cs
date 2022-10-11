@@ -14,21 +14,27 @@ public class PlayerOneMovement : MonoBehaviour
     public Transform feet, head, left, right;
     public LayerMask groundLayers;
     public List<LayerMask> trapLayers;
-    private LayerMask currentTrapLayer;
+    public List<LayerMask> quickSandLayers;
+    private LayerMask currentTrapLayer, currentQuickSandLayer;
     public LayerMask endLayers;
     public Text scoreManager;
     public List<GameObject> archs;
     public GameObject spawnPoint;
     float mx;
     string horizontalvariable;
+    private bool sinking;
 
     private void Start()
     {
         currentTrapLayer = trapLayers[0];
+        currentQuickSandLayer = quickSandLayers[0];
+        sinking = false;
         Physics2D.IgnoreLayerCollision(11, 3, false);
         Physics2D.IgnoreLayerCollision(11, 7, false);
         Physics2D.IgnoreLayerCollision(11, 10, true);
         Physics2D.IgnoreLayerCollision(11, 12, true);
+        Physics2D.IgnoreLayerCollision(11, 14, true);
+        Physics2D.IgnoreLayerCollision(11, 15, true);
         StreamReader sr = new StreamReader(Application.persistentDataPath + "/Value.txt");
         sr.ReadLine();
         if (sr.ReadLine() == "FaceToFace")
@@ -81,6 +87,12 @@ public class PlayerOneMovement : MonoBehaviour
             if (transform.position.z == 2)
                 Transfer();
             transform.position = spawnPoint.transform.position;
+        }
+
+        if (SteppedIntoQuickSand())
+        {
+            if(!sinking)
+                StartCoroutine(Sink());
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow) && InArch())
@@ -163,6 +175,36 @@ public class PlayerOneMovement : MonoBehaviour
 
         return false;
     }
+    public bool SteppedIntoQuickSand()
+    {
+        List<Collider2D> check = new List<Collider2D>();
+        check.Add(Physics2D.OverlapCircle(feet.position, 0.15f, currentQuickSandLayer));
+        check.Add(Physics2D.OverlapCircle(head.position, 0.15f, currentQuickSandLayer));
+        check.Add(Physics2D.OverlapCircle(left.position, 0.15f, currentQuickSandLayer));
+        check.Add(Physics2D.OverlapCircle(right.position, 0.15f, currentQuickSandLayer));
+
+        foreach (Collider2D item in check)
+        {
+            if (item != null)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    IEnumerator Sink()
+    {
+        Debug.Log("Sinking");
+        sinking = true;
+        while (SteppedIntoQuickSand())
+        {
+            yield return new WaitForSeconds(0f);
+            transform.position = Vector3.MoveTowards(transform.position, transform.position+new Vector3(0f,8f,0f), 15f * Time.deltaTime);
+        }
+        sinking = false;
+    }
 
     public void Transfer()
     {
@@ -174,6 +216,7 @@ public class PlayerOneMovement : MonoBehaviour
             Physics2D.IgnoreLayerCollision(11, 10, false);
             Physics2D.IgnoreLayerCollision(11, 12, false);
             currentTrapLayer = trapLayers[1];
+            currentQuickSandLayer = quickSandLayers[1];
         }
         else
         {
@@ -183,6 +226,7 @@ public class PlayerOneMovement : MonoBehaviour
             Physics2D.IgnoreLayerCollision(11, 10, true);
             Physics2D.IgnoreLayerCollision(11, 12, true);
             currentTrapLayer = trapLayers[0];
+            currentQuickSandLayer = quickSandLayers[0];
         }
     }
 
