@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 499096662016
-    m_Localized: "\rANFANG"
+    m_Localized: Fortsetzen
     m_Metadata:
       m_Items: []
   - m_Id: 1695110836224
@@ -68,6 +68,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 9542804615168
     m_Localized: "\rSprache"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73181185894428672
+    m_Localized: Spiel verlassen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73182782770819072
+    m_Localized: "\rAngehalten"
     m_Metadata:
       m_Items: []
   references:
