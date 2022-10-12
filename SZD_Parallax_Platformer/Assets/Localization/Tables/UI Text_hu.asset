@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 499096662016
-    m_Localized: "J\xC1T\xC9K"
+    m_Localized: "Folyatat\xE1s"
     m_Metadata:
       m_Items: []
   - m_Id: 1695110836224
@@ -68,6 +68,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 9542804615168
     m_Localized: Nyelv
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73181185894428672
+    m_Localized: "Kil\xE9p\xE9s a j\xE1t\xE9kb\xF3l"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73182782770819072
+    m_Localized: "Meg\xE1ll\xEDtva"
     m_Metadata:
       m_Items: []
   references:

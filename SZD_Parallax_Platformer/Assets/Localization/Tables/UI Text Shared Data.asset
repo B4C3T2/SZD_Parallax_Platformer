@@ -16,7 +16,7 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: e7f4e97525ac1fd40bf7e1072df2ef98
   m_Entries:
   - m_Id: 499096662016
-    m_Key: StartButton
+    m_Key: ResumeButton
     m_Metadata:
       m_Items: []
   - m_Id: 1695110836224
@@ -65,6 +65,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 9542804615168
     m_Key: LanguageText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73181185894428672
+    m_Key: AntoherQuitButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73182782770819072
+    m_Key: PauseMenu
     m_Metadata:
       m_Items: []
   m_Metadata:
