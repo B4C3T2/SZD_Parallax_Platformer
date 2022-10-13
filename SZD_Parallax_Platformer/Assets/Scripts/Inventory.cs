@@ -21,7 +21,13 @@ public class Inventory : MonoBehaviour
                 Debug.Log("Key collected");
                 col.ReplaceKey();
             }
-            
+            else
+            {
+                Debug.Log("Cape collected");
+                col.ReplaceCape();
+            }
+
+
         }
     }
 }
