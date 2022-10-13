@@ -18,14 +18,14 @@ public class Bulletscrippt : MonoBehaviour
         player1 = GameObject.FindGameObjectWithTag("Player1");
         player2 = GameObject.FindGameObjectWithTag("Player2");
         target = PlayerCloser();
-        targetLocation = new Vector2(target.transform.position.x, target.transform.position.y);
+        targetLocation = new Vector3(target.transform.position.x, target.transform.position.y, 5);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        transform.position = Vector2.MoveTowards(transform.position, targetLocation, 4 * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetLocation, 4 * Time.deltaTime);
         if ((transform.position.x == targetLocation.x && transform.position.y == targetLocation.y) ||
             HitGround())
         {

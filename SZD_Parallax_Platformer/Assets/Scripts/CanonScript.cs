@@ -31,7 +31,7 @@ public class CanonScript : MonoBehaviour
         barrel.transform.up = targetLocation - (Vector2)transform.position;
         if( MaxTimeBetweenShots <= 0)
         {
-            Instantiate(Bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z - 5), Quaternion.identity);
+            Instantiate(Bullet, new Vector3(transform.position.x, transform.position.y, target.transform.position.z), Quaternion.identity);
             MaxTimeBetweenShots = TimeBetweenShots;
         }
         else
