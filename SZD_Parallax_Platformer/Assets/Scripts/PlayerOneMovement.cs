@@ -175,6 +175,7 @@ public class PlayerOneMovement : MonoBehaviour
 
         return false;
     }
+
     public bool SteppedIntoQuickSand()
     {
         List<Collider2D> check = new List<Collider2D>();

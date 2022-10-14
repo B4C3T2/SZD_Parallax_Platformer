@@ -7,8 +7,9 @@ public class Bulletscrippt : MonoBehaviour
 {
     private GameObject player1, player2;
     private GameObject target;
-    private Vector2 targetLocation;
-    public LayerMask groundLayers;
+    private Vector3 targetLocation;
+    public List<LayerMask> groundLayers;
+    private LayerMask currentGroundLayer;
     private float distance;
     private Vector2 direction;
 
@@ -18,7 +19,19 @@ public class Bulletscrippt : MonoBehaviour
         player1 = GameObject.FindGameObjectWithTag("Player1");
         player2 = GameObject.FindGameObjectWithTag("Player2");
         target = PlayerCloser();
-        targetLocation = new Vector3(target.transform.position.x, target.transform.position.y, 5);
+        targetLocation = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z);
+        if(targetLocation.z == 0)
+        {
+            Physics2D.IgnoreLayerCollision(16, 10, true);
+            Physics2D.IgnoreLayerCollision(16, 12, true);
+            currentGroundLayer = groundLayers[0];
+        }                                  
+        else                               
+        {                                  
+            Physics2D.IgnoreLayerCollision(16, 3, true);
+            Physics2D.IgnoreLayerCollision(16, 7, true);
+            currentGroundLayer = groundLayers[1];
+        }
     }
 
     // Update is called once per frame
@@ -58,7 +71,7 @@ public class Bulletscrippt : MonoBehaviour
 
     private bool HitGround()
     {
-        Collider2D groundCheck = Physics2D.OverlapCircle(transform.position, 0.1f, groundLayers);
+        Collider2D groundCheck = Physics2D.OverlapCircle(transform.position, 0.1f, currentGroundLayer);
 
         if (groundCheck != null)
         {

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6961792829896718026}
   - component: {fileID: 6961792829896718029}
   - component: {fileID: 6961792829896718025}
-  m_Layer: 7
+  m_Layer: 16
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,5 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundLayers:
-    serializedVersion: 2
+  - serializedVersion: 2
     m_Bits: 8
+  - serializedVersion: 2
+    m_Bits: 1024

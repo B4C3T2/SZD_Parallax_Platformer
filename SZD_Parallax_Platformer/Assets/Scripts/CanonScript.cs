@@ -12,7 +12,7 @@ public class CanonScript : MonoBehaviour
     private GameObject player1;
     private GameObject player2;
     private GameObject target;
-    private Vector2 targetLocation;
+    private Vector3 targetLocation;
     public GameObject barrel;
 
     // Start is called before the first frame update
@@ -27,8 +27,8 @@ public class CanonScript : MonoBehaviour
         player1 = GameObject.FindGameObjectWithTag("Player1");
         player2 = GameObject.FindGameObjectWithTag("Player2");
         target = PlayerCloser();
-        targetLocation = new Vector2(target.transform.position.x, target.transform.position.y);
-        barrel.transform.up = targetLocation - (Vector2)transform.position;
+        targetLocation = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z);
+        barrel.transform.up = targetLocation - (Vector3)transform.position;
         if( MaxTimeBetweenShots <= 0)
         {
             Instantiate(Bullet, new Vector3(transform.position.x, transform.position.y, target.transform.position.z), Quaternion.identity);
