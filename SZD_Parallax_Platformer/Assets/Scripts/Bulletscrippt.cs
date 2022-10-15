@@ -22,14 +22,16 @@ public class Bulletscrippt : MonoBehaviour
         targetLocation = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z);
         if(targetLocation.z == 0)
         {
-            Physics2D.IgnoreLayerCollision(16, 10, true);
-            Physics2D.IgnoreLayerCollision(16, 12, true);
+            gameObject.layer = LayerMask.NameToLayer("Trap");
+            Physics2D.IgnoreLayerCollision(7, 10, true);
+            Physics2D.IgnoreLayerCollision(7, 12, true);
             currentGroundLayer = groundLayers[0];
         }                                  
         else                               
-        {                                  
-            Physics2D.IgnoreLayerCollision(16, 3, true);
-            Physics2D.IgnoreLayerCollision(16, 7, true);
+        {
+            gameObject.layer = LayerMask.NameToLayer("Trap2");
+            Physics2D.IgnoreLayerCollision(12, 3, true);
+            Physics2D.IgnoreLayerCollision(12, 7, true);
             currentGroundLayer = groundLayers[1];
         }
     }
