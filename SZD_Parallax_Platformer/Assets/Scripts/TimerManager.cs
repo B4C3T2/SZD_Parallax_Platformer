@@ -72,10 +72,9 @@ public class TimerManager : MonoBehaviour
             time = TimeSpan.FromSeconds(elapsedTime);
             string timeString = "Timer: " + time.ToString("mm':'ss");
             string file = Application.persistentDataPath + "/Value.txt";
-            string[] array = System.IO.File.ReadAllLines(file);
+            string[] array = File.ReadAllLines(file);
             array[0] = elapsedTime.ToString();
-            System.IO.File.WriteAllLines(file, array);
-            print("Lófasz");
+            File.WriteAllLines(file, array);
             timerManager.text = timeString;
 
             yield return null;

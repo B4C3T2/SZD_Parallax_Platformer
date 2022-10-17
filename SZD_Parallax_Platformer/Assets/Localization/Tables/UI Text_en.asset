@@ -78,5 +78,9 @@ MonoBehaviour:
     m_Localized: Paused
     m_Metadata:
       m_Items: []
+  - m_Id: 74986641658916864
+    m_Localized: PLAY
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
