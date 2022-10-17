@@ -75,7 +75,6 @@ public class TimerManager : MonoBehaviour
             string[] array = System.IO.File.ReadAllLines(file);
             array[0] = elapsedTime.ToString();
             System.IO.File.WriteAllLines(file, array);
-            print("Lófasz");
             timerManager.text = timeString;
 
             yield return null;
