@@ -27,14 +27,14 @@ public class PlayerOneMovement : MonoBehaviour
     private void Start()
     {
         currentTrapLayer = trapLayers[0];
-        currentQuickSandLayer = quickSandLayers[0];
+        //currentQuickSandLayer = quickSandLayers[0];
         sinking = false;
         Physics2D.IgnoreLayerCollision(11, 3, false);
         Physics2D.IgnoreLayerCollision(11, 7, false);
         Physics2D.IgnoreLayerCollision(11, 10, true);
         Physics2D.IgnoreLayerCollision(11, 12, true);
-        Physics2D.IgnoreLayerCollision(11, 14, true);
-        Physics2D.IgnoreLayerCollision(11, 15, true);
+        //Physics2D.IgnoreLayerCollision(11, 14, true);
+        //Physics2D.IgnoreLayerCollision(11, 15, true);
         StreamReader sr = new StreamReader(Application.persistentDataPath + "/Value.txt");
         sr.ReadLine();
         if (sr.ReadLine() == "FaceToFace")
@@ -89,11 +89,11 @@ public class PlayerOneMovement : MonoBehaviour
             transform.position = spawnPoint.transform.position;
         }
 
-        if (SteppedIntoQuickSand())
-        {
-            if(!sinking)
-                StartCoroutine(Sink());
-        }
+        //if (SteppedIntoQuickSand())
+        //{
+        //    if(!sinking)
+        //        StartCoroutine(Sink());
+        //}
 
         if (Input.GetKeyDown(KeyCode.DownArrow) && InArch())
         {
