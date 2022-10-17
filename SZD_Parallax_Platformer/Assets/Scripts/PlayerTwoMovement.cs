@@ -104,9 +104,9 @@ public class PlayerTwoMovement : MonoBehaviour
             {
                 sr.Close();
                 string file = Application.persistentDataPath + "/Value.txt";
-                string[] array = File.ReadAllLines(file);
+                string[] array = System.IO.File.ReadAllLines(file);
                 array[3] = (int.Parse(array[3]) + 1).ToString();
-                File.WriteAllLines(file, array);
+                System.IO.File.WriteAllLines(file, array);
                 scoreManager.text = "P2: " + array[3];
             }
             sr.Close();

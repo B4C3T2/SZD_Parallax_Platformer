@@ -18,13 +18,12 @@ public class Inventory : MonoBehaviour
         {
             if (col is CollectedKey)
             {
-                Debug.Log("Key collected");                        
+                Debug.Log("Key collected");
                 col.ReplaceKey();
             }
             else
             {
                 Debug.Log("Cape collected");
-                Debug.Log(Application.persistentDataPath);
                 col.ReplaceCape();
             }
 

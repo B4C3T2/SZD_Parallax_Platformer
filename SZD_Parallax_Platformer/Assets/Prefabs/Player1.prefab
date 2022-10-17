@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 2318903128411920015}
   - component: {fileID: 2318903128411920008}
   - component: {fileID: 2318903128411920010}
+  - component: {fileID: 2318903128411920009}
+  - component: {fileID: 2318903128411920012}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player1
@@ -282,15 +284,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   trapLayers:
-  - serializedVersion: 2
+    serializedVersion: 2
     m_Bits: 128
-  - serializedVersion: 2
-    m_Bits: 4096
-  quickSandLayers: []
   endLayers:
     serializedVersion: 2
     m_Bits: 256
-  scoreManager: {fileID: 0}
   archs: []
   spawnPoint: {fileID: 0}
 --- !u!95 &2318903128411920010
@@ -312,3 +310,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2318903128411920009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318903128411920011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e1510f123de4bd46b0cdddaca6cdaf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerManager: {fileID: 2676145982044405974, guid: b0c7583a6b68ccf4691fa8ef2ece689e, type: 3}
+--- !u!114 &2318903128411920012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318903128411920011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 663280cb6fb8bc04e870174d66f74746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -27,14 +27,14 @@ public class PlayerOneMovement : MonoBehaviour
     private void Start()
     {
         currentTrapLayer = trapLayers[0];
-        //currentQuickSandLayer = quickSandLayers[0];
-        //sinking = false;
+        currentQuickSandLayer = quickSandLayers[0];
+        sinking = false;
         Physics2D.IgnoreLayerCollision(11, 3, false);
         Physics2D.IgnoreLayerCollision(11, 7, false);
         Physics2D.IgnoreLayerCollision(11, 10, true);
         Physics2D.IgnoreLayerCollision(11, 12, true);
-        //Physics2D.IgnoreLayerCollision(11, 14, true);
-        //Physics2D.IgnoreLayerCollision(11, 15, true);
+        Physics2D.IgnoreLayerCollision(11, 14, true);
+        Physics2D.IgnoreLayerCollision(11, 15, true);
         StreamReader sr = new StreamReader(Application.persistentDataPath + "/Value.txt");
         sr.ReadLine();
         if (sr.ReadLine() == "FaceToFace")
@@ -89,11 +89,11 @@ public class PlayerOneMovement : MonoBehaviour
             transform.position = spawnPoint.transform.position;
         }
 
-        //if (SteppedIntoQuickSand())
-        //{
-        //    if (!sinking)
-        //        StartCoroutine(Sink());
-        //}
+        if (SteppedIntoQuickSand())
+        {
+            if(!sinking)
+                StartCoroutine(Sink());
+        }
 
         if (Input.GetKeyDown(KeyCode.DownArrow) && InArch())
         {
@@ -108,9 +108,9 @@ public class PlayerOneMovement : MonoBehaviour
             {
                 sr.Close();
                 string file = Application.persistentDataPath + "/Value.txt";
-                string[] array = File.ReadAllLines(file);
+                string[] array = System.IO.File.ReadAllLines(file);
                 array[2] = (int.Parse(array[2]) + 1).ToString();
-                File.WriteAllLines(file, array);
+                System.IO.File.WriteAllLines(file, array);
                 scoreManager.text = "P1: " + array[2];
             }
             sr.Close();
@@ -176,36 +176,36 @@ public class PlayerOneMovement : MonoBehaviour
         return false;
     }
 
-    //public bool SteppedIntoQuickSand()
-    //{
-    //    List<Collider2D> check = new List<Collider2D>();
-    //    check.Add(Physics2D.OverlapCircle(feet.position, 0.15f, currentQuickSandLayer));
-    //    check.Add(Physics2D.OverlapCircle(head.position, 0.15f, currentQuickSandLayer));
-    //    check.Add(Physics2D.OverlapCircle(left.position, 0.15f, currentQuickSandLayer));
-    //    check.Add(Physics2D.OverlapCircle(right.position, 0.15f, currentQuickSandLayer));
+    public bool SteppedIntoQuickSand()
+    {
+        List<Collider2D> check = new List<Collider2D>();
+        check.Add(Physics2D.OverlapCircle(feet.position, 0.15f, currentQuickSandLayer));
+        check.Add(Physics2D.OverlapCircle(head.position, 0.15f, currentQuickSandLayer));
+        check.Add(Physics2D.OverlapCircle(left.position, 0.15f, currentQuickSandLayer));
+        check.Add(Physics2D.OverlapCircle(right.position, 0.15f, currentQuickSandLayer));
 
-    //    foreach (Collider2D item in check)
-    //    {
-    //        if (item != null)
-    //        {
-    //            return true;
-    //        }
-    //    }
+        foreach (Collider2D item in check)
+        {
+            if (item != null)
+            {
+                return true;
+            }
+        }
 
-    //    return false;
-    //}
+        return false;
+    }
 
-    //IEnumerator Sink()
-    //{
-    //    Debug.Log("Sinking");
-    //    sinking = true;
-    //    while (SteppedIntoQuickSand())
-    //    {
-    //        yield return new WaitForSeconds(0f);
-    //        transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0f, 8f, 0f), 15f * Time.deltaTime);
-    //    }
-    //    sinking = false;
-    //}
+    IEnumerator Sink()
+    {
+        Debug.Log("Sinking");
+        sinking = true;
+        while (SteppedIntoQuickSand())
+        {
+            yield return new WaitForSeconds(0f);
+            transform.position = Vector3.MoveTowards(transform.position, transform.position+new Vector3(0f,8f,0f), 15f * Time.deltaTime);
+        }
+        sinking = false;
+    }
 
     public void Transfer()
     {
