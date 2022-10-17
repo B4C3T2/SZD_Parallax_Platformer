@@ -75,6 +75,10 @@ MonoBehaviour:
     m_Key: PauseMenu
     m_Metadata:
       m_Items: []
+  - m_Id: 74986641658916864
+    m_Key: PlayButton
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

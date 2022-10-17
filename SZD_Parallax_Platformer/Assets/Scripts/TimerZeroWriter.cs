@@ -10,11 +10,11 @@ public class TimerZeroWriter : MonoBehaviour
     {
         string file = Application.persistentDataPath + "/Value.txt";
         print("Print to: " + file);
-        string[] array = System.IO.File.ReadAllLines(file);
+        string[] array = File.ReadAllLines(file);
         array[0] = "0";
         array[2] = "0";
         array[3] = "0";
-        System.IO.File.WriteAllLines(file,array);
+        File.WriteAllLines(file, array);
 
         
     }
