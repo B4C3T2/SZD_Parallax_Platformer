@@ -16,7 +16,7 @@ public class SkinManager : MonoBehaviour
     public GameObject playerskin2;
     public static int P1Id;
     public static int P2Id;
-
+    
     
     public void NextButton1()
     {
@@ -65,9 +65,9 @@ public class SkinManager : MonoBehaviour
             PrefabUtility.SaveAsPrefabAsset(playerskin1, "Assets/Prefabs/selectedskin1.prefab");
             PrefabUtility.SaveAsPrefabAsset(playerskin2, "Assets/Prefabs/selectedskin2.prefab");
             string file = Application.persistentDataPath + "/Value.txt";
-            string[] array = File.ReadAllLines(file);
+            string[] array = System.IO.File.ReadAllLines(file);
             array[1] = "FaceToFace";
-            File.WriteAllLines(file, array);
+            System.IO.File.WriteAllLines(file, array);
 
             SceneManager.LoadScene("Level1");
         }       
@@ -81,9 +81,9 @@ public class SkinManager : MonoBehaviour
             PrefabUtility.SaveAsPrefabAsset(playerskin1, "Assets/Prefabs/selectedskin1.prefab");
             PrefabUtility.SaveAsPrefabAsset(playerskin2, "Assets/Prefabs/selectedskin2.prefab");
             string file = Application.persistentDataPath + "/Value.txt";
-            string[] array = File.ReadAllLines(file);
+            string[] array = System.IO.File.ReadAllLines(file);
             array[1] = "TimeRush";
-            File.WriteAllLines(file, array);
+            System.IO.File.WriteAllLines(file, array);
 
             SceneManager.LoadScene("Level1");
         }

@@ -78,9 +78,5 @@ MonoBehaviour:
     m_Localized: "\rAngehalten"
     m_Metadata:
       m_Items: []
-  - m_Id: 74986641658916864
-    m_Localized: "\rABSPIELEN"
-    m_Metadata:
-      m_Items: []
   references:
     version: 1
