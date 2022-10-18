@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 using System.IO;
+using UnityEngine.UI;
 
 public class SkinManager : MonoBehaviour
 {
@@ -16,8 +17,10 @@ public class SkinManager : MonoBehaviour
     public GameObject playerskin2;
     public static int P1Id;
     public static int P2Id;
-    
-    
+    public Text Player1InputName;
+    public Text Player2InputName;
+
+
     public void NextButton1()
     {
         selectedSkin1 = selectedSkin1 + 1;
@@ -67,6 +70,8 @@ public class SkinManager : MonoBehaviour
             string file = Application.persistentDataPath + "/Value.txt";
             string[] array = System.IO.File.ReadAllLines(file);
             array[1] = "FaceToFace";
+            array[4] = Player1InputName.text;
+            array[5] = Player2InputName.text;
             System.IO.File.WriteAllLines(file, array);
 
             SceneManager.LoadScene("Level1");
@@ -83,6 +88,8 @@ public class SkinManager : MonoBehaviour
             string file = Application.persistentDataPath + "/Value.txt";
             string[] array = System.IO.File.ReadAllLines(file);
             array[1] = "TimeRush";
+            array[4] = Player1InputName.text;
+            array[5] = Player2InputName.text;
             System.IO.File.WriteAllLines(file, array);
 
             SceneManager.LoadScene("Level1");

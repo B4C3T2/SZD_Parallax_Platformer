@@ -18,6 +18,7 @@ public class PlayerOneMovement : MonoBehaviour
     private LayerMask currentTrapLayer, currentQuickSandLayer;
     public LayerMask endLayers;
     public Text scoreManager;
+    public Text nameTag;
     public List<GameObject> archs;
     public GameObject spawnPoint;
     float mx;
@@ -26,6 +27,7 @@ public class PlayerOneMovement : MonoBehaviour
 
     private void Start()
     {
+
         currentTrapLayer = trapLayers[0];
         //currentQuickSandLayer = quickSandLayers[0];
         sinking = false;
@@ -35,12 +37,15 @@ public class PlayerOneMovement : MonoBehaviour
         Physics2D.IgnoreLayerCollision(11, 12, true);
         //Physics2D.IgnoreLayerCollision(11, 14, true);
         //Physics2D.IgnoreLayerCollision(11, 15, true);
-        StreamReader sr = new StreamReader(Application.persistentDataPath + "/Value.txt");
+        string file = Application.persistentDataPath + "/Value.txt";
+        StreamReader sr = new StreamReader(file);
+        string[] array = File.ReadAllLines(file);
+        nameTag.text = array[4];
         sr.ReadLine();
         if (sr.ReadLine() == "FaceToFace")
         {
             sr.Close();
-            scoreManager.text = "P1: 0";
+            scoreManager.text = nameTag.text+": 0";     
         }
         sr.Close();
         if (SkinManager.P1Id == 1)
@@ -111,7 +116,7 @@ public class PlayerOneMovement : MonoBehaviour
                 string[] array = System.IO.File.ReadAllLines(file);
                 array[2] = (int.Parse(array[2]) + 1).ToString();
                 System.IO.File.WriteAllLines(file, array);
-                scoreManager.text = "P1: " + array[2];
+                scoreManager.text = nameTag.text + ": " + array[2];
             }
             sr.Close();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

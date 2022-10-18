@@ -18,6 +18,7 @@ public class PlayerTwoMovement : MonoBehaviour
     private LayerMask currentTrapLayer, currentQuickSandLayer;
     public LayerMask endLayers;
     public Text scoreManager;
+    public Text nameTag;
     public List<GameObject> archs;
     public GameObject spawnPoint;
     float mx;
@@ -31,14 +32,18 @@ public class PlayerTwoMovement : MonoBehaviour
         Physics2D.IgnoreLayerCollision(13, 7, false);
         Physics2D.IgnoreLayerCollision(13, 10, true);
         Physics2D.IgnoreLayerCollision(13, 12, true);
-        StreamReader sr = new StreamReader(Application.persistentDataPath + "/Value.txt");
+        string file = Application.persistentDataPath + "/Value.txt";
+        StreamReader sr = new StreamReader(file);
+        string[] array = File.ReadAllLines(file);
+        nameTag.text = array[5];
         sr.ReadLine();
         if (sr.ReadLine() == "FaceToFace")
         {
             sr.Close();
-            scoreManager.text = "P2: 0";
+            scoreManager.text = nameTag.text+": 0";
         }
         sr.Close();
+        
         if (SkinManager.P2Id == 1)
         {
             horizontalvariable = "Horizontal1";
@@ -107,7 +112,7 @@ public class PlayerTwoMovement : MonoBehaviour
                 string[] array = System.IO.File.ReadAllLines(file);
                 array[3] = (int.Parse(array[3]) + 1).ToString();
                 System.IO.File.WriteAllLines(file, array);
-                scoreManager.text = "P2: " + array[3];
+                scoreManager.text = nameTag.text + ": " + array[3];
             }
             sr.Close();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

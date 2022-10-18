@@ -367,6 +367,7 @@
 "Assets/Scripts/PauseManager.cs"
 "Assets/Scripts/PlatformMovement.cs"
 "Assets/Scripts/PlayerDeathAndRespawn.cs"
+"Assets/Scripts/PlayerNameTag.cs"
 "Assets/Scripts/PlayerOneMovement.cs"
 "Assets/Scripts/PlayerTwoMovement.cs"
 "Assets/Scripts/SawScript.cs"
