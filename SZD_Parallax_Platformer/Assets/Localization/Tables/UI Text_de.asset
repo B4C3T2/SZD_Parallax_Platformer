@@ -59,11 +59,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6606024257536
-    m_Localized: Spieler1
+    m_Localized: 'Spieler1:'
     m_Metadata:
       m_Items: []
   - m_Id: 6746428583936
-    m_Localized: Spieler2
+    m_Localized: 'Spieler2:'
     m_Metadata:
       m_Items: []
   - m_Id: 9542804615168
