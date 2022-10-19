@@ -60,23 +60,23 @@ public class PlayerOneMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.Joystick1Button4))
         {
             animator.SetFloat(horizontalvariable, Input.GetAxis("Horizontal"));
             transform.position += Vector3.left * movementSpeed * Time.deltaTime;
         }    
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.Joystick1Button5))
         {
             animator.SetFloat(horizontalvariable, Input.GetAxis("Horizontal"));
             transform.position += Vector3.right * movementSpeed * Time.deltaTime;     
 
         }
-        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow) && Input.GetKey(KeyCode.Joystick1Button4) || Input.GetKey(KeyCode.Joystick1Button5))
         {
             animator.SetFloat(horizontalvariable, 0f);
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrouned())
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKey(KeyCode.Joystick1Button0)) && IsGrouned())
         {
             Jump();
         }
@@ -87,7 +87,7 @@ public class PlayerOneMovement : MonoBehaviour
             SetCollision();
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow) && InArch())
+        if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.Joystick1Button1)) && InArch())
         {
             Transfer();
         }

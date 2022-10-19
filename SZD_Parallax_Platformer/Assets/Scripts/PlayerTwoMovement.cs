@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class PlayerTwoMovement : MonoBehaviour
 {
     public Animator animator; // for animation
@@ -25,6 +26,8 @@ public class PlayerTwoMovement : MonoBehaviour
 
     private void Start()
     {
+        
+
         currentTrapLayer = trapLayers[0];
         Physics2D.IgnoreLayerCollision(13, 3, false);
         Physics2D.IgnoreLayerCollision(13, 7, false);
@@ -60,23 +63,23 @@ public class PlayerTwoMovement : MonoBehaviour
     }
     private void Update()
     {     
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Joystick2Button4))
         {
             animator.SetFloat(horizontalvariable, Input.GetAxis("Horizontal"));
             transform.position += Vector3.left * movementSpeed * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.Joystick2Button5))
         {
             animator.SetFloat(horizontalvariable, Input.GetAxis("Horizontal"));
             transform.position += Vector3.right * movementSpeed * Time.deltaTime;
             
         }
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKey(KeyCode.Joystick2Button4) || Input.GetKey(KeyCode.Joystick2Button5))
         {
             animator.SetFloat(horizontalvariable, 0f);
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && IsGrouned())
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKey(KeyCode.Joystick2Button0)) && IsGrouned())
         {       
             Jump();
         }
@@ -87,7 +90,7 @@ public class PlayerTwoMovement : MonoBehaviour
             SetCollision();
         }
 
-        if (Input.GetKeyDown(KeyCode.S) && InArch())
+        if ((Input.GetKeyDown(KeyCode.S) || Input.GetKey(KeyCode.Joystick2Button1)) && InArch())
         {
             Transfer();
         }
