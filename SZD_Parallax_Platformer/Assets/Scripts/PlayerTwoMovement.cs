@@ -14,8 +14,7 @@ public class PlayerTwoMovement : MonoBehaviour
     public Transform feet, head, left, right;
     public LayerMask groundLayers;
     public List<LayerMask> trapLayers;
-    public List<LayerMask> quickSandLayers;
-    private LayerMask currentTrapLayer, currentQuickSandLayer;
+    private LayerMask currentTrapLayer;
     public LayerMask endLayers;
     public Text scoreManager;
     public Text nameTag;
@@ -23,7 +22,6 @@ public class PlayerTwoMovement : MonoBehaviour
     public GameObject spawnPoint;
     float mx;
     string horizontalvariable;
-    private bool sinking;
 
     private void Start()
     {
@@ -85,15 +83,8 @@ public class PlayerTwoMovement : MonoBehaviour
         
         if(SteppedIntoTrap())
         {
-            if (transform.position.z == 2)
-                Transfer();
             transform.position = spawnPoint.transform.position;
-        }
-
-        if (SteppedIntoQuickSand())
-        {
-            if (!sinking)
-                StartCoroutine(Sink());
+            SetCollision();
         }
 
         if (Input.GetKeyDown(KeyCode.S) && InArch())
@@ -178,59 +169,27 @@ public class PlayerTwoMovement : MonoBehaviour
         return false;
     }
 
-    public bool SteppedIntoQuickSand()
-    {
-        List<Collider2D> check = new List<Collider2D>();
-        check.Add(Physics2D.OverlapCircle(feet.position, 0.15f, currentQuickSandLayer));
-        check.Add(Physics2D.OverlapCircle(head.position, 0.15f, currentQuickSandLayer));
-        check.Add(Physics2D.OverlapCircle(left.position, 0.15f, currentQuickSandLayer));
-        check.Add(Physics2D.OverlapCircle(right.position, 0.15f, currentQuickSandLayer));
-
-        foreach (Collider2D item in check)
-        {
-            if (item != null)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    IEnumerator Sink()
-    {
-        Debug.Log("Sinking");
-        sinking = true;
-        while (SteppedIntoQuickSand())
-        {
-            yield return new WaitForSeconds(0f);
-            transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0f, 8f, 0f), 15f * Time.deltaTime);
-        }
-        sinking = false;
-    }
-
     public void Transfer()
     {
         if (transform.position.z == 0)
         {
             transform.position += new Vector3(0f, 0f, 2f);
-            Physics2D.IgnoreLayerCollision(13, 3, true);
-            Physics2D.IgnoreLayerCollision(13, 7, true);
-            Physics2D.IgnoreLayerCollision(13, 10, false);
-            Physics2D.IgnoreLayerCollision(13, 12, false);
-            currentTrapLayer = trapLayers[1];
-            currentQuickSandLayer = quickSandLayers[1];
+            SetCollision();
         }
         else
         {
             transform.position -= new Vector3(0f, 0f, 2f);
-            Physics2D.IgnoreLayerCollision(13 , 3, false);
-            Physics2D.IgnoreLayerCollision(13 , 7, false);
-            Physics2D.IgnoreLayerCollision(13 , 10, true);
-            Physics2D.IgnoreLayerCollision(13 , 12, true);
-            currentTrapLayer = trapLayers[0];
-            currentQuickSandLayer = quickSandLayers[0];
+            SetCollision();
         }
+    }
+
+    public void SetCollision()
+    {
+        Physics2D.IgnoreLayerCollision(13, 3, transform.position.z == 2);
+        Physics2D.IgnoreLayerCollision(13, 7, transform.position.z == 2);
+        Physics2D.IgnoreLayerCollision(13, 10, transform.position.z != 2);
+        Physics2D.IgnoreLayerCollision(13, 12, transform.position.z != 2);
+        currentTrapLayer = trapLayers[transform.position.z == 2 ? 1 : 0];
     }
 
     public bool Ended()
