@@ -17,10 +17,15 @@ public class SkinManager : MonoBehaviour
     public GameObject playerskin2;
     public static int P1Id;
     public static int P2Id;
-    public Text Player1InputName;
-    public Text Player2InputName;
+    public Text player1InputName;
+    public Text player2InputName;
+    public Text warningText;
+    string file;
 
-
+    private void Start()
+    {
+        file = Application.dataPath + "/Value.txt";
+    }
     public void NextButton1()
     {
         selectedSkin1 = selectedSkin1 + 1;
@@ -61,42 +66,54 @@ public class SkinManager : MonoBehaviour
 
     public void PlayGameFaceToFace()
     {
-        if (selectedSkin1 != selectedSkin2)
+        
+        Warning();
+        if ((selectedSkin1 != selectedSkin2) && (player1InputName.text.Length <= 10) && (player2InputName.text.Length <= 10))
         {
-            P1Id = selectedSkin1 + 1;
-            P2Id = selectedSkin2 + 1;
-            PrefabUtility.SaveAsPrefabAsset(playerskin1, "Assets/Prefabs/selectedskin1.prefab");
-            PrefabUtility.SaveAsPrefabAsset(playerskin2, "Assets/Prefabs/selectedskin2.prefab");
-            string file = Application.persistentDataPath + "/Value.txt";
-            string[] array = System.IO.File.ReadAllLines(file);
+            string[] array = File.ReadAllLines(file);
             array[1] = "FaceToFace";
-            array[4] = Player1InputName.text;
-            array[5] = Player2InputName.text;
-            System.IO.File.WriteAllLines(file, array);
-
-            SceneManager.LoadScene("Level1");
+            File.WriteAllLines(file, array);
+            ChangeSkin();
         }       
     }
     public void PlayGameTimeRush()
     {
-        if (selectedSkin1 != selectedSkin2)
+        Warning();
+        if((selectedSkin1 != selectedSkin2) && (player1InputName.text.Length <= 10) && (player2InputName.text.Length <= 10))
         {
-            P1Id = selectedSkin1 + 1;
-            P2Id = selectedSkin2 + 1;
-            PrefabUtility.SaveAsPrefabAsset(playerskin1, "Assets/Prefabs/selectedskin1.prefab");
-            PrefabUtility.SaveAsPrefabAsset(playerskin2, "Assets/Prefabs/selectedskin2.prefab");
-            string file = Application.persistentDataPath + "/Value.txt";
-            string[] array = System.IO.File.ReadAllLines(file);
+            string[] array = File.ReadAllLines(file);
             array[1] = "TimeRush";
-            array[4] = Player1InputName.text;
-            array[5] = Player2InputName.text;
-            System.IO.File.WriteAllLines(file, array);
-
-            SceneManager.LoadScene("Level1");
+            File.WriteAllLines(file, array);
+            ChangeSkin();
         }
+    }
+    void ChangeSkin()
+    {
+        P1Id = selectedSkin1 + 1;
+        P2Id = selectedSkin2 + 1;
+        PrefabUtility.SaveAsPrefabAsset(playerskin1, "Assets/Prefabs/selectedskin1.prefab");
+        PrefabUtility.SaveAsPrefabAsset(playerskin2, "Assets/Prefabs/selectedskin2.prefab");
+        string[] array = File.ReadAllLines(file);
+        array[4] = player1InputName.text;
+        array[5] = player2InputName.text;
+        File.WriteAllLines(file, array);
+
+        SceneManager.LoadScene("Level1");
     }
     public void BackMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
+    void Warning()
+    {
+        if (selectedSkin1 == selectedSkin2)
+        {
+            warningText.text = "You can't use the same skin!\nPlease choose another one.";
+        }
+        if ((player1InputName.text.Length > 10) || (player2InputName.text.Length > 10))
+        {
+            warningText.text = "Your name is too long!\nThe maximum character size is 10";
+        }
+    }
+
 }

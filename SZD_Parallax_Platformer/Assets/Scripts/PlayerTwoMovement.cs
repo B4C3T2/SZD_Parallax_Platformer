@@ -11,7 +11,7 @@ public class PlayerTwoMovement : MonoBehaviour
     public Animator animator; // for animation
     public float movementSpeed;
     public Rigidbody2D rb;
-    public float jumpForce = 20f;
+    private float jumpForce;
     public Transform feet, head, left, right;
     public LayerMask groundLayers;
     public List<LayerMask> trapLayers;
@@ -26,14 +26,13 @@ public class PlayerTwoMovement : MonoBehaviour
 
     private void Start()
     {
-        
-
+        jumpForce = 10f;
         currentTrapLayer = trapLayers[0];
         Physics2D.IgnoreLayerCollision(13, 3, false);
         Physics2D.IgnoreLayerCollision(13, 7, false);
         Physics2D.IgnoreLayerCollision(13, 10, true);
         Physics2D.IgnoreLayerCollision(13, 12, true);
-        string file = Application.persistentDataPath + "/Value.txt";
+        string file = Application.dataPath + "/Value.txt";
         StreamReader sr = new StreamReader(file);
         string[] array = File.ReadAllLines(file);
         nameTag.text = array[5];
@@ -97,12 +96,12 @@ public class PlayerTwoMovement : MonoBehaviour
 
         if (Ended())
         {
-            StreamReader sr = new StreamReader(Application.persistentDataPath + "/Value.txt");
+            StreamReader sr = new StreamReader(Application.dataPath + "/Value.txt");
             sr.ReadLine();
             if (sr.ReadLine() == "FaceToFace")
             {
                 sr.Close();
-                string file = Application.persistentDataPath + "/Value.txt";
+                string file = Application.dataPath + "/Value.txt";
                 string[] array = System.IO.File.ReadAllLines(file);
                 array[3] = (int.Parse(array[3]) + 1).ToString();
                 System.IO.File.WriteAllLines(file, array);
@@ -115,12 +114,13 @@ public class PlayerTwoMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 movement = new Vector2(mx * movementSpeed, rb.velocity.y);
+        Vector2 movement = new Vector2(mx*movementSpeed, rb.velocity.y);
 
         rb.velocity = movement;
     }
     void Jump()
     {
+        
         Vector2 movement = new Vector2(rb.velocity.x, jumpForce);
 
         rb.velocity = movement;
@@ -205,5 +205,37 @@ public class PlayerTwoMovement : MonoBehaviour
         }
 
         return false;
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Collectable"))
+        {
+            Collected(other.GetComponent<CollectManager>());
+        }
+    }
+
+    private void Collected(CollectManager col)
+    {
+        if (col.Collect())
+        {
+            if (col is CollectedKey)
+            {
+                Debug.Log("Key collected");
+                //TODO
+                col.ReplaceKey();
+            }
+            else
+            {
+                Debug.Log("Cape collected");
+                StartCoroutine(CapeInUse());
+                col.ReplaceCape();
+            }
+        }
+    }
+    IEnumerator CapeInUse()
+    {
+        jumpForce = 15f;
+        yield return new WaitForSeconds(10f);
+        jumpForce = 10f;
     }
 }
