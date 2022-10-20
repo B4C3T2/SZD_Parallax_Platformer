@@ -36,7 +36,7 @@ public class TimerManager : MonoBehaviour
 
     public void Start()
     {
-        StreamReader sr = new StreamReader(Application.persistentDataPath + "/Value.txt");
+        StreamReader sr = new StreamReader(Application.dataPath + "/Value.txt");
         sr.ReadLine();
         if(sr.ReadLine() == "TimeRush")
         {
@@ -51,7 +51,7 @@ public class TimerManager : MonoBehaviour
 
     public void TimerStarted()
     {
-        StreamReader sr = new StreamReader(Application.persistentDataPath + "/Value.txt");
+        StreamReader sr = new StreamReader(Application.dataPath + "/Value.txt");
         timerIsCounting = true;
         elapsedTime = double.Parse(sr.ReadLine());
         sr.Close();
@@ -71,7 +71,7 @@ public class TimerManager : MonoBehaviour
             elapsedTime += Time.deltaTime;
             time = TimeSpan.FromSeconds(elapsedTime);
             string timeString = "Timer: " + time.ToString("mm':'ss");
-            string file = Application.persistentDataPath + "/Value.txt";
+            string file = Application.dataPath + "/Value.txt";
             string[] array = System.IO.File.ReadAllLines(file);
             array[0] = elapsedTime.ToString();
             System.IO.File.WriteAllLines(file, array);

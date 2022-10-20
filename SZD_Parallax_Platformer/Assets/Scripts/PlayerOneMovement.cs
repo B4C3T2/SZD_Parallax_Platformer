@@ -10,7 +10,7 @@ public class PlayerOneMovement : MonoBehaviour
     public Animator animator; // for animation
     public float movementSpeed;
     public Rigidbody2D rb;
-    public float jumpForce = 20f;
+    private float jumpForce;
     public Transform feet, head, left, right;
     public LayerMask groundLayers;
     public List<LayerMask> trapLayers;
@@ -25,13 +25,13 @@ public class PlayerOneMovement : MonoBehaviour
 
     private void Start()
     {
-
+        jumpForce = 10f;
         currentTrapLayer = trapLayers[0];
         Physics2D.IgnoreLayerCollision(11, 3, false);
         Physics2D.IgnoreLayerCollision(11, 7, false);
         Physics2D.IgnoreLayerCollision(11, 10, true);
         Physics2D.IgnoreLayerCollision(11, 12, true);
-        string file = Application.persistentDataPath + "/Value.txt";
+        string file = Application.dataPath + "/Value.txt";
         StreamReader sr = new StreamReader(file);
         string[] array = File.ReadAllLines(file);
         nameTag.text = array[4];
@@ -94,12 +94,12 @@ public class PlayerOneMovement : MonoBehaviour
 
         if (Ended())
         {
-            StreamReader sr = new StreamReader(Application.persistentDataPath + "/Value.txt");
+            StreamReader sr = new StreamReader(Application.dataPath + "/Value.txt");
             sr.ReadLine();
             if (sr.ReadLine() == "FaceToFace")
             {
                 sr.Close();
-                string file = Application.persistentDataPath + "/Value.txt";
+                string file = Application.dataPath + "/Value.txt";
                 string[] array = System.IO.File.ReadAllLines(file);
                 array[2] = (int.Parse(array[2]) + 1).ToString();
                 System.IO.File.WriteAllLines(file, array);
@@ -201,6 +201,37 @@ public class PlayerOneMovement : MonoBehaviour
         }
 
         return false;
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Collectable"))
+        {
+            Collected(other.GetComponent<CollectManager>());
+        }
+    }
+
+    private void Collected(CollectManager col)
+    {
+        if (col.Collect())
+        {
+            if (col is CollectedKey)
+            {
+                Debug.Log("Key collected");
+                col.ReplaceKey();
+            }
+            else
+            {
+                Debug.Log("Cape collected");
+                StartCoroutine(CapeInUse());
+                col.ReplaceCape();
+            }
+        }
+    }
+    IEnumerator CapeInUse()
+    {
+        jumpForce = 15f;
+        yield return new WaitForSeconds(10f);
+        jumpForce = 10f;
     }
 }
 
