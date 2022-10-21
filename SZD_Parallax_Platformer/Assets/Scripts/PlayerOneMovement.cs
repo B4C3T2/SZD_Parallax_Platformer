@@ -22,9 +22,11 @@ public class PlayerOneMovement : MonoBehaviour
     public GameObject spawnPoint;
     float mx;
     string horizontalvariable;
+    private bool isKeyPickedUp;
 
     private void Start()
     {
+        isKeyPickedUp = false;
         jumpForce = 10f;
         currentTrapLayer = trapLayers[0];
         Physics2D.IgnoreLayerCollision(11, 3, false);
@@ -89,7 +91,9 @@ public class PlayerOneMovement : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.Joystick1Button1)) && InArch())
         {
-            Transfer();
+            if(isKeyPickedUp)
+                Transfer();
+                     
         }
 
         if (Ended())
@@ -161,6 +165,7 @@ public class PlayerOneMovement : MonoBehaviour
         {
             if(item != null)
             {
+                isKeyPickedUp = false;
                 return true;
             }
         }
@@ -217,6 +222,7 @@ public class PlayerOneMovement : MonoBehaviour
             if (col is CollectedKey)
             {
                 Debug.Log("Key collected");
+                isKeyPickedUp = true;
                 col.ReplaceKey();
             }
             else
@@ -233,5 +239,7 @@ public class PlayerOneMovement : MonoBehaviour
         yield return new WaitForSeconds(10f);
         jumpForce = 10f;
     }
+ 
+
 }
 
