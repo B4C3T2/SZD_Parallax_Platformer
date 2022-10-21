@@ -31,7 +31,6 @@ public class PauseManager : MonoBehaviour
         {
             if(isPaused)
                 Resume();
-
             else
                 Pause();
         }
