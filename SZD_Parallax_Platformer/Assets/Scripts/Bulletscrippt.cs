@@ -9,6 +9,7 @@ public class Bulletscrippt : MonoBehaviour
     private GameObject target;
     private Vector3 targetLocation;
     public List<LayerMask> groundLayers;
+    public LayerMask wallLayer;
     private LayerMask currentGroundLayer;
     private float distance;
     private Vector2 direction;
@@ -42,7 +43,7 @@ public class Bulletscrippt : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, targetLocation, 4 * Time.deltaTime);
         if ((transform.position.x == targetLocation.x && transform.position.y == targetLocation.y) ||
-            HitGround())
+            HitGround() || HitWall())
         {
             Destroy(gameObject);
         }
@@ -76,6 +77,17 @@ public class Bulletscrippt : MonoBehaviour
         Collider2D groundCheck = Physics2D.OverlapCircle(transform.position, 0.1f, currentGroundLayer);
 
         if (groundCheck != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+    private bool HitWall()
+    {
+        Collider2D wallCheck = Physics2D.OverlapCircle(transform.position, 0.1f, wallLayer);
+
+        if (wallCheck != null)
         {
             return true;
         }
