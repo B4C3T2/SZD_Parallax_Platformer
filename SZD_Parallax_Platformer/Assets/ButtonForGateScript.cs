@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class ButtonForGateScript : MonoBehaviour
@@ -9,7 +10,15 @@ public class ButtonForGateScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        string file = Application.dataPath + "/Value.txt";
+        StreamReader sr = new StreamReader(file);
+        sr.ReadLine();
+        if (sr.ReadLine() == "FaceToFace")
+        {
+            Destroy(gateClosed);
+            Destroy(gameObject);
+        }
+        sr.Close();
     }
 
     // Update is called once per frame

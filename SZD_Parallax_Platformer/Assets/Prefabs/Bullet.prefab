@@ -140,3 +140,6 @@ MonoBehaviour:
     m_Bits: 8
   - serializedVersion: 2
     m_Bits: 1024
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
