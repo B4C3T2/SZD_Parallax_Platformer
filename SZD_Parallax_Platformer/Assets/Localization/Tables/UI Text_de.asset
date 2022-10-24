@@ -82,5 +82,13 @@ MonoBehaviour:
     m_Localized: ABSPIELEN
     m_Metadata:
       m_Items: []
+  - m_Id: 77583599447748608
+    m_Localized: "\rBESTE ZEITEN"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77586926038331392
+    m_Localized: "\rDie TOP 3 Bestzeiten:"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

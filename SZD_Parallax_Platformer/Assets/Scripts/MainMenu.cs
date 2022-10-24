@@ -21,4 +21,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void GoToScoreScene()
+    {
+        SceneManager.LoadScene("ScoreScene");
+    }
 }

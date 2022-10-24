@@ -82,5 +82,13 @@ MonoBehaviour:
     m_Localized: PLAY
     m_Metadata:
       m_Items: []
+  - m_Id: 77583599447748608
+    m_Localized: BEST TIMES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77586926038331392
+    m_Localized: 'The TOP 3 best times:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
