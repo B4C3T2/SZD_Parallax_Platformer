@@ -8,24 +8,30 @@ using UnityEngine.UI;
 public class EndTime : MonoBehaviour
 {
     public Text endText;
+    public double tempTime;
     private int score1, score2;
-    // Start is called before the first frame update
     void Start()
     {
         
-        StreamReader sr = new StreamReader(Application.persistentDataPath + "/Value.txt");
+
+       
+        StreamReader sr = new StreamReader(Application.dataPath + "/Value.txt");
         sr.ReadLine();
         if (sr.ReadLine() == "TimeRush")
         {
             sr.Close();
-            string file = Application.persistentDataPath + "/Value.txt";
+            string file = Application.dataPath + "/Value.txt";
             StreamReader sr2 = new StreamReader(file);
-            endText.text = "Your time: " + TimeSpan.FromSeconds(double.Parse(sr2.ReadLine())).ToString("mm':'ss");
+            TimeSpan t = TimeSpan.FromSeconds(double.Parse(sr2.ReadLine()));
+            endText.text = "Your time: " + t.ToString("mm':'ss");
             sr2.Close();
+            tempTime = double.Parse(t.Seconds.ToString());
+            TimerManager time = new TimerManager();
+            time.EndTimer();
         }
         else
         {
-            StreamReader srScore = new StreamReader(Application.persistentDataPath + "/Value.txt");
+            StreamReader srScore = new StreamReader(Application.dataPath + "/Value.txt");
             srScore.ReadLine();
             srScore.ReadLine();
             score1 = int.Parse(srScore.ReadLine());
@@ -38,11 +44,32 @@ public class EndTime : MonoBehaviour
                 endText.text = "It's a tie! Scores: " + score2 + ":" + score1;
 
         }
+        
+        string times = Application.dataPath + "/Score.txt";
+        string[] array = File.ReadAllLines(times);
+        string file2 = Application.dataPath + "/Value.txt";
+        string[] array2 = File.ReadAllLines(file2);
+
+        if (tempTime < double.Parse(array[0]))
+        {
+            array[2] = array[1];
+            array[1] = array[0];       
+            array[0] = tempTime.ToString();
+            array[3] = array2[4] + " & " + array2[5];
+        }
+        else if (tempTime < double.Parse(array[1]) && tempTime > double.Parse(array[0]))
+        {
+            array[2] = array[1];
+            array[1] = tempTime.ToString();
+            array[4] = array2[4] + " & " + array2[5];
+        }
+        else if (tempTime < double.Parse(array[2]) && tempTime > double.Parse(array[1]))
+        {
+            array[2] = tempTime.ToString();
+            array[5] = array2[4] + " & " + array2[5];
+        }
+        File.WriteAllLines(times, array);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

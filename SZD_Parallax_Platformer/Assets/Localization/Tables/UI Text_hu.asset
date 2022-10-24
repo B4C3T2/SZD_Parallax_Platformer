@@ -82,5 +82,13 @@ MonoBehaviour:
     m_Localized: "J\xC1T\xC9K"
     m_Metadata:
       m_Items: []
+  - m_Id: 77583599447748608
+    m_Localized: "LEGJOBB ID\u0150K"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77586926038331392
+    m_Localized: "A legjobb 3 id\u0151:"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

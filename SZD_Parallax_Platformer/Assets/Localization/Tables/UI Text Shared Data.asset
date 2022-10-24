@@ -79,6 +79,14 @@ MonoBehaviour:
     m_Key: PlayButton
     m_Metadata:
       m_Items: []
+  - m_Id: 77583599447748608
+    m_Key: ScoreButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77586926038331392
+    m_Key: TopText
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -56,7 +56,7 @@ public class TimerManager : MonoBehaviour
         elapsedTime = double.Parse(sr.ReadLine());
         sr.Close();
         StartCoroutine(UpdateTimer());
-        
+            
     }
     
     public void EndTimer()
@@ -65,6 +65,7 @@ public class TimerManager : MonoBehaviour
     }
     private IEnumerator UpdateTimer()
     {
+
         while (timerIsCounting)
         {
             
