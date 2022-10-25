@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TimerManager : MonoBehaviour
@@ -58,11 +59,7 @@ public class TimerManager : MonoBehaviour
         StartCoroutine(UpdateTimer());
             
     }
-    
-    public void EndTimer()
-    {
-        timerIsCounting = false;
-    }
+
     private IEnumerator UpdateTimer()
     {
 
@@ -77,12 +74,16 @@ public class TimerManager : MonoBehaviour
             array[0] = elapsedTime.ToString();
             System.IO.File.WriteAllLines(file, array);
             timerManager.text = timeString;
-
+            
             yield return null;
         }
     }
     public void Update()
     {
-        
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "End" || scene.name == "MainMenu")
+        {
+            Destroy(gameObject);
+        }
     }
 }

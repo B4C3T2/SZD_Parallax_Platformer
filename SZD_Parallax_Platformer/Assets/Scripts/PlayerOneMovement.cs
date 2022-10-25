@@ -23,6 +23,8 @@ public class PlayerOneMovement : MonoBehaviour
     float mx;
     string horizontalvariable;
     private bool isKeyPickedUp;
+    string[] joysticks;
+
 
     private void Start()
     {
@@ -59,9 +61,17 @@ public class PlayerOneMovement : MonoBehaviour
             horizontalvariable = "Horizontal3";
             animator.runtimeAnimatorController = Resources.Load("Pennywise") as RuntimeAnimatorController;
         }
+        
     }
     private void Update()
     {
+
+        //float horizontalMovement = Input.GetAxis("Horizontal");
+        //Vector2 movementOnCoordinateX = new Vector2(horizontalMovement, 0f);
+        //transform.Translate(movementOnCoordinateX * movementSpeed * Time.deltaTime);
+        
+        
+
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.Joystick1Button4))
         {
             animator.SetFloat(horizontalvariable, Input.GetAxis("Horizontal"));
@@ -73,7 +83,7 @@ public class PlayerOneMovement : MonoBehaviour
             transform.position += Vector3.right * movementSpeed * Time.deltaTime;     
 
         }
-        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow) && Input.GetKey(KeyCode.Joystick1Button4) || Input.GetKey(KeyCode.Joystick1Button5))
+        if ((Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))|| (Input.GetKey(KeyCode.Joystick1Button4) || Input.GetKey(KeyCode.Joystick1Button5)))
         {
             animator.SetFloat(horizontalvariable, 0f);
         }
