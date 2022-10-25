@@ -62,7 +62,7 @@ public class PlayerTwoMovement : MonoBehaviour
         }
     }
     private void Update()
-    {     
+    {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Joystick2Button4))
         {
             animator.SetFloat(horizontalvariable, Input.GetAxis("Horizontal"));
@@ -74,7 +74,7 @@ public class PlayerTwoMovement : MonoBehaviour
             transform.position += Vector3.right * movementSpeed * Time.deltaTime;
             
         }
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKey(KeyCode.Joystick2Button4) || Input.GetKey(KeyCode.Joystick2Button5))
+        if ((Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D)) || (Input.GetKey(KeyCode.Joystick2Button4) || Input.GetKey(KeyCode.Joystick2Button5)))
         {
             animator.SetFloat(horizontalvariable, 0f);
         }
