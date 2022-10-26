@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.Localization.Settings;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 
 namespace UnityEngine.Localization.Samples
@@ -43,12 +44,15 @@ namespace UnityEngine.Localization.Samples
             var options = new List<string>();
             int selectedOption = 0;
             var locales = LocalizationSettings.AvailableLocales.Locales;
+
+            
             for (int i = 0; i < locales.Count; ++i)
             {
                 var locale = locales[i];
                 if (LocalizationSettings.SelectedLocale == locale)
                     selectedOption = i;
 
+                
                 var displayName = locales[i].Identifier.CultureInfo != null ? locales[i].Identifier.CultureInfo.NativeName : locales[i].ToString();
                 options.Add(displayName);
             }

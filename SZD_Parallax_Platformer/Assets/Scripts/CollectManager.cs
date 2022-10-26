@@ -8,22 +8,16 @@ public class CollectManager : MonoBehaviour
     
     private bool isCollected = false;
     public int zero = 0;
-    List<float> positionX;
-    List<float> positionY;
+    List<Vector3> capeSpawnPoints;
     private void Start()
     {
-        positionX = new List<float>();
-        positionX.Add(-2f);
-        positionX.Add(9f);
-        positionX.Add(4f);
-        positionX.Add(-9f);
-        positionX.Add(-10f);
-
-        positionY = new List<float>();
-        positionY.Add(-4f);
-        positionY.Add(-4f);
-        positionY.Add(0f);
-        positionY.Add(1f);
+        capeSpawnPoints = new List<Vector3>();
+        capeSpawnPoints.Add(new Vector3(2f,4f, 7f));
+        capeSpawnPoints.Add(new Vector3(-9f, 4f, 7f));
+        capeSpawnPoints.Add(new Vector3(-4f, 0f, 7f));
+        capeSpawnPoints.Add(new Vector3(-6f, -1f, 7f));
+        capeSpawnPoints.Add(new Vector3(10f, -4f, 7f));
+        capeSpawnPoints.Add(new Vector3(6f, 2f, 7f));
     }
     public bool Collect()
     {
@@ -50,9 +44,8 @@ public class CollectManager : MonoBehaviour
     private IEnumerator WaitForCape()
     {      
         yield return new WaitForSeconds(10f);
-        float rndX = positionX[(int)Random.Range(0,5)];
-        float rndY = positionY[(int)Random.Range(0, 4)];
-        gameObject.transform.position -= new Vector3(rndX, rndY, 7f);
+        gameObject.transform.position = new Vector3(0f, 0f, 0f);
+        gameObject.transform.position -= capeSpawnPoints[(int)Random.Range(0, 6)];
         isCollected = false;
     }
 

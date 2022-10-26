@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -18,7 +19,6 @@ public class TimerManager : MonoBehaviour
     }
     private double elapsedTime;
 
-
     private void Awake()
     {
         if (instance == null)
@@ -31,8 +31,7 @@ public class TimerManager : MonoBehaviour
         {
             Destroy(this.gameObject);
             Destroy(timerManager.gameObject);
-        }
-        
+        }    
     }
 
     public void Start()
@@ -44,10 +43,6 @@ public class TimerManager : MonoBehaviour
             sr.Close();
             TimerStarted();
         }
-            
-        
-        //timerManager.text = string.Format("Timer: " + TimeSpan.FromSeconds(elapsedTime).ToString("mm':'ss"));
-
     }
 
     public void TimerStarted()
@@ -56,25 +51,21 @@ public class TimerManager : MonoBehaviour
         timerIsCounting = true;
         elapsedTime = double.Parse(sr.ReadLine());
         sr.Close();
-        StartCoroutine(UpdateTimer());
-            
+        StartCoroutine(UpdateTimer());         
     }
 
     private IEnumerator UpdateTimer()
     {
-
         while (timerIsCounting)
         {
-            
             elapsedTime += Time.deltaTime;
             time = TimeSpan.FromSeconds(elapsedTime);
-            string timeString = "Timer: " + time.ToString("mm':'ss");
+            string timeString = "Timer: " + time.ToString("mm':'ss");     
             string file = Application.dataPath + "/Value.txt";
             string[] array = System.IO.File.ReadAllLines(file);
             array[0] = elapsedTime.ToString();
             System.IO.File.WriteAllLines(file, array);
-            timerManager.text = timeString;
-            
+            timerManager.text = timeString;       
             yield return null;
         }
     }
