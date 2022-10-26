@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 public class EndTime : MonoBehaviour
@@ -20,7 +21,19 @@ public class EndTime : MonoBehaviour
             string file = Application.dataPath + "/Value.txt";
             StreamReader sr2 = new StreamReader(file);
             TimeSpan t = TimeSpan.FromSeconds(double.Parse(sr2.ReadLine()));
-            endText.text = "Your time: " + t.ToString("mm':'ss");
+            var local = LocalizationSettings.SelectedLocale;
+            if (local.ToString() == "English (en)")
+            {
+                endText.text = "Your time: " + t.ToString("mm':'ss");
+            }
+            if (local.ToString() == "Hungarian (hu)")
+            {
+                endText.text = "Az idötök: " + t.ToString("mm':'ss");
+            }
+            if (local.ToString() == "German (de)")
+            {
+                endText.text = "Deine Zeit: " + t.ToString("mm':'ss");
+            }
             sr2.Close();
 
             tempTime = double.Parse(t.Seconds.ToString());
@@ -50,6 +63,7 @@ public class EndTime : MonoBehaviour
         }
         else
         {
+            var local = LocalizationSettings.SelectedLocale;
             string names = (Application.dataPath + "/Value.txt");
             string[] array = File.ReadAllLines(names);
 
@@ -58,12 +72,27 @@ public class EndTime : MonoBehaviour
             srScore.ReadLine();
             score1 = int.Parse(srScore.ReadLine());
             score2 = int.Parse(srScore.ReadLine());
-            if (score1 > score2)
-                endText.text = array[4] + " won the game, scored: " + score1 + ":" + score2;
-            else if (score1 < score2)
-                endText.text = array[5] + "won the game, scored: " + score2 + ":" + score1;
-            else
-                endText.text = "It's a tie! Scores: " + score2 + ":" + score1;
+            if (local.ToString() == "English (en)")
+            {
+                if (score1 > score2)
+                    endText.text = array[4] + " won the game, scored: " + score1 + ":" + score2;
+                else if (score1 < score2)
+                    endText.text = array[5] + " won the game, scored: " + score2 + ":" + score1;
+            }
+            if (local.ToString() == "Hungarian (hu)")
+            {
+                if (score1 > score2)
+                    endText.text = array[4] + " nyerte a játékot, a pontszámok: " + score1 + ":" + score2;
+                else if (score1 < score2)
+                    endText.text = array[5] + " nyerte a játékot, a pontszámok: " + score2 + ":" + score1;
+            }
+            if (local.ToString() == "German (de)")
+            {
+                if (score1 > score2)
+                    endText.text = array[4] + " gewann das Spiel, erzielte: " + score1 + ":" + score2;
+                else if (score1 < score2)
+                    endText.text = array[5] + " gewann das Spiel, erzielte: " + score2 + ":" + score1;
+            }
 
         }
     }

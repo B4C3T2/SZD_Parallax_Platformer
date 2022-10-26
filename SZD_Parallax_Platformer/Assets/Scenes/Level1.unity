@@ -11293,7 +11293,7 @@ GameObject:
   - component: {fileID: 2055504712}
   - component: {fileID: 2055504711}
   - component: {fileID: 2055504710}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: SpikeWall
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -11878,6 +11878,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4407643915063255350, guid: 4c5c6ced2cead2a44ae01998736e57ca, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4407643915063255350, guid: 4c5c6ced2cead2a44ae01998736e57ca, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4407643915063255350, guid: 4c5c6ced2cead2a44ae01998736e57ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8330647386533453307, guid: 4c5c6ced2cead2a44ae01998736e57ca, type: 3}
       propertyPath: spawnPoint
       value: 

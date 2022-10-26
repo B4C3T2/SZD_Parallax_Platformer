@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 using System.IO;
 using UnityEngine.UI;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Localization;
 
 public class SkinManager : MonoBehaviour
 {
@@ -108,11 +110,24 @@ public class SkinManager : MonoBehaviour
     {
         if (selectedSkin1 == selectedSkin2)
         {
-            warningText.text = "You can't use the same skin!\nPlease choose another one.";
+            var locale = LocalizationSettings.SelectedLocale;
+            Debug.Log(locale);
+            if (locale.ToString() == "English (en)")
+                warningText.text = "You can't use the same skin!\nPlease choose another one.";
+            if (locale.ToString() == "Hungarian (hu)")
+                warningText.text = "Nem használhatjátok ugyan azt a skint!\nValaki válasszon másikat.";
+            if (locale.ToString() == "German (de)")
+                warningText.text = "Sie können nicht denselben Skin verwenden!\nBitte wählen Sie eine andere aus.";
         }
         if ((player1InputName.text.Length > 10) || (player2InputName.text.Length > 10))
         {
-            warningText.text = "Your name is too long!\nThe maximum character size is 10";
+            var locale = LocalizationSettings.SelectedLocale;
+            if (locale.ToString() == "English (en)")
+                warningText.text = "Your name is too long!\nThe maximum character size is 10.";
+            if (locale.ToString() == "Hungarian (hu)")
+                warningText.text = "A név túl hosszú!\nMaximum 10 karakterböl állhat.";
+            if (locale.ToString() == "German (de)")
+                warningText.text = "Ihr Name ist zu lang!\nDie maximale Zeichengröße beträgt 10.";
         }
     }
 
