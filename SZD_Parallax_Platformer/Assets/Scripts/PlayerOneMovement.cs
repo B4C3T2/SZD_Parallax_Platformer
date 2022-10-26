@@ -1,3 +1,5 @@
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -22,7 +24,7 @@ public class PlayerOneMovement : MonoBehaviour
     public GameObject spawnPoint;
     float mx;
     string horizontalvariable;
-    private bool isKeyPickedUp;
+    public bool isKeyPickedUp;
     string[] joysticks;
 
 
@@ -114,13 +116,19 @@ public class PlayerOneMovement : MonoBehaviour
             {
                 sr.Close();
                 string file = Application.dataPath + "/Value.txt";
-                string[] array = System.IO.File.ReadAllLines(file);
+                string[] array = File.ReadAllLines(file);
                 array[2] = (int.Parse(array[2]) + 1).ToString();
-                System.IO.File.WriteAllLines(file, array);
+                File.WriteAllLines(file, array);
                 scoreManager.text = nameTag.text + ": " + array[2];
             }
             sr.Close();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        string valueIsTrue = Application.dataPath + "/Value.txt";
+        string[] changedArray = File.ReadAllLines(valueIsTrue);
+        if (changedArray[6] == "true")
+        {
+            isKeyPickedUp = true;
         }
     }
 
@@ -232,6 +240,15 @@ public class PlayerOneMovement : MonoBehaviour
             if (col is CollectedKey)
             {
                 Debug.Log("Key collected");
+                Scene scene = SceneManager.GetActiveScene();
+                string file = Application.dataPath + "/Value.txt";
+                string[] array = File.ReadAllLines(file);
+                string map = array[1];
+                if (map == "TimeRush" && scene.name == "Level5")
+                {
+                    array[6] = "true";
+                    File.WriteAllLines(file, array);
+                }            
                 isKeyPickedUp = true;
                 col.ReplaceKey();
             }
