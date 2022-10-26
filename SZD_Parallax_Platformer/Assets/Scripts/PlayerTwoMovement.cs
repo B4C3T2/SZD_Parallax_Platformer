@@ -23,7 +23,7 @@ public class PlayerTwoMovement : MonoBehaviour
     public GameObject spawnPoint;
     float mx;
     string horizontalvariable;
-    private bool isKeyPickedUp;
+    public bool isKeyPickedUp;
     private void Start()
     {
         isKeyPickedUp = false;
@@ -111,6 +111,12 @@ public class PlayerTwoMovement : MonoBehaviour
             }
             sr.Close();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        string valueIsTrue = Application.dataPath + "/Value.txt";
+        string[] changedArray = File.ReadAllLines(valueIsTrue);
+        if (changedArray[6] == "true")
+        {
+            isKeyPickedUp = true;
         }
     }
 
@@ -224,6 +230,15 @@ public class PlayerTwoMovement : MonoBehaviour
             if (col is CollectedKey)
             {
                 Debug.Log("Key collected");
+                Scene scene = SceneManager.GetActiveScene();
+                string file = Application.dataPath + "/Value.txt";
+                string[] array = File.ReadAllLines(file);
+                string map = array[1];
+                if (map == "TimeRush" && scene.name == "Level5")
+                {
+                    array[6] = "true";
+                    File.WriteAllLines(file, array);
+                }
                 isKeyPickedUp = true;
                 col.ReplaceKey();
             }

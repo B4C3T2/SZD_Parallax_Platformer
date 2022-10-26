@@ -13,6 +13,7 @@ public class TimerZeroWriter : MonoBehaviour
         array[0] = "0";
         array[2] = "0";
         array[3] = "0";
+        array[6] = "false";
         System.IO.File.WriteAllLines(file,array);      
     }
 }
