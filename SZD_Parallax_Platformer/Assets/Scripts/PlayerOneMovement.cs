@@ -14,9 +14,8 @@ public class PlayerOneMovement : MonoBehaviour
     public Rigidbody2D rb;
     private float jumpForce;
     public Transform feet, head, left, right;
-    public LayerMask groundLayers;
-    public List<LayerMask> trapLayers;
-    private LayerMask currentTrapLayer;
+    public List<LayerMask> trapLayers, groundLayers;
+    private LayerMask currentTrapLayer, currentGroundLayer;
     public LayerMask endLayers;
     public Text scoreManager;
     public Text nameTag;
@@ -33,6 +32,7 @@ public class PlayerOneMovement : MonoBehaviour
         isKeyPickedUp = false;
         jumpForce = 10f;
         currentTrapLayer = trapLayers[0];
+        currentGroundLayer = groundLayers[0];
         Physics2D.IgnoreLayerCollision(11, 3, false);
         Physics2D.IgnoreLayerCollision(11, 7, false);
         Physics2D.IgnoreLayerCollision(11, 10, true);
@@ -147,7 +147,7 @@ public class PlayerOneMovement : MonoBehaviour
 
     public bool IsGrouned()
     {
-        Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.2f, groundLayers);
+        Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.2f, currentGroundLayer);
 
         if (groundCheck != null)
         {
@@ -212,6 +212,7 @@ public class PlayerOneMovement : MonoBehaviour
         Physics2D.IgnoreLayerCollision(11, 10, transform.position.z != 2);
         Physics2D.IgnoreLayerCollision(11, 12, transform.position.z != 2);
         currentTrapLayer = trapLayers[transform.position.z == 2 ? 1 : 0];
+        currentGroundLayer = groundLayers[transform.position.z == 2 ? 1 : 0];
     }
 
     public bool Ended()
