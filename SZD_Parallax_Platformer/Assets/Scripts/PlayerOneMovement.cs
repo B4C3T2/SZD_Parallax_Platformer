@@ -45,7 +45,7 @@ public class PlayerOneMovement : MonoBehaviour
         if (sr.ReadLine() == "FaceToFace")
         {
             sr.Close();
-            scoreManager.text = nameTag.text+": 0";     
+            scoreManager.text = nameTag.text+": 0";
         }
         sr.Close();
         if (SkinManager.P1Id == 1)
@@ -126,9 +126,12 @@ public class PlayerOneMovement : MonoBehaviour
         }
         string valueIsTrue = Application.dataPath + "/Value.txt";
         string[] changedArray = File.ReadAllLines(valueIsTrue);
-        if (changedArray[6] == "true")
+        if (changedArray[1] == "TimeRush")
         {
-            isKeyPickedUp = true;
+            if (changedArray[6] == "true")
+                isKeyPickedUp = true;
+            else
+                isKeyPickedUp = false;
         }
     }
 
@@ -221,6 +224,10 @@ public class PlayerOneMovement : MonoBehaviour
 
         if (endCheck != null)
         {
+            string file = Application.dataPath + "/Value.txt";
+            string[] array = File.ReadAllLines(file);
+            array[6] = "false";
+            File.WriteAllLines(file, array);
             return true;
         }
 
@@ -241,11 +248,10 @@ public class PlayerOneMovement : MonoBehaviour
             if (col is CollectedKey)
             {
                 Debug.Log("Key collected");
-                Scene scene = SceneManager.GetActiveScene();
                 string file = Application.dataPath + "/Value.txt";
                 string[] array = File.ReadAllLines(file);
                 string map = array[1];
-                if (map == "TimeRush" && scene.name == "Level5")
+                if (map == "TimeRush")
                 {
                     array[6] = "true";
                     File.WriteAllLines(file, array);
