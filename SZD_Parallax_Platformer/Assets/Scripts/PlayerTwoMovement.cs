@@ -155,7 +155,9 @@ public class PlayerTwoMovement : MonoBehaviour
         foreach (var arch in archs)
         {
             if (transform.position.x <= arch.transform.position.x + 0.1f &&
-                transform.position.x > arch.transform.position.x - 0.1f)
+                transform.position.x > arch.transform.position.x - 0.1f &&
+                transform.position.y <= arch.transform.position.y + 0.1f &&
+                transform.position.y > arch.transform.position.y - 0.1f)
             {
                 return true;
             }
