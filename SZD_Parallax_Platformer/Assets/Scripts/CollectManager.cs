@@ -43,7 +43,7 @@ public class CollectManager : MonoBehaviour
     private IEnumerator WaitForCape()
     {      
         yield return new WaitForSeconds(10f);
-        gameObject.transform.position -= new Vector3(0f, 0f, 0f);
+        gameObject.transform.position = new Vector3(0f, 0f, 7f);
         gameObject.transform.position -= capeSpawnPoints[(int)Random.Range(0, 6)];
         isCollected = false;
     }
